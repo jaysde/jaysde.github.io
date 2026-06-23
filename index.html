@@ -94,10 +94,10 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/favicon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
 
-  <link rel="canonical" href="https://anukritisinghh.github.io/">
+  <link rel="canonical" href="https://jayysuthar.github.io/">
 
   
   
@@ -113,10 +113,10 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Jay Suthar">
-  <meta property="og:url" content="https://anukritisinghh.github.io/">
+  <meta property="og:url" content="https://jayysuthar.github.io/">
   <meta property="og:title" content="Jay Suthar">
-  <meta property="og:description" content="Jay Suthar"><meta property="og:image" content="https://anukritisinghh.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://anukritisinghh.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="Machine Learning Engineer"><meta property="og:image" content="https://jayysuthar.github.io/images/ME.jpg">
+  <meta property="twitter:image" content="https://jayysuthar.github.io/images/ME.jpg"><meta property="og:locale" content="en-us">
   
     <meta property="og:updated_time" content="2020-08-01T00:00:00&#43;00:00">
   
@@ -129,7 +129,7 @@
   "@type": "WebSite",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://anukritisinghh.github.io/?q={search_term_string}",
+    "target": "https://jayysuthar.github.io/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   },
   "url": "https://itsjay63.github.io/"
@@ -139,6 +139,32 @@
 
 
   <title>Jay Suthar</title>
+
+  <style>
+    /* Keep nav items on one line; the active/bold state must not wrap or break words.
+       flex:0 0 auto stops items shrinking below their content width when a link goes bold. */
+    #navbar-main .navbar-nav .nav-item { flex: 0 0 auto !important; }
+    #navbar-main .navbar-nav .nav-link,
+    #navbar-main .navbar-nav .nav-link span,
+    .navbar-nav .nav-link,
+    .navbar-nav .nav-link span {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+      word-wrap: normal !important;
+      hyphens: none !important;
+    }
+    /* Prevent the "google-scholar" link from breaking at its hyphen */
+    .alert-note a { white-space: nowrap; }
+    /* Experience & Contact are flex items that otherwise shrink to their content,
+       making them narrower than Publications. Force them to the full content width. */
+    #experience, #contact { flex: 0 0 100% !important; width: 100% !important; }
+    /* Experience section: exact 40% / 60% split on desktop (Bootstrap default is 33/66) */
+    @media (min-width: 992px) {
+      #experience .row > .section-heading { flex: 0 0 40%; max-width: 40%; }
+      #experience .row > .section-heading + div { flex: 0 0 60%; max-width: 60%; }
+    }
+  </style>
 
 </head>
 
@@ -288,12 +314,12 @@
 
       <div class="portrait-title">
         <h2>Jay Suthar</h2>
-        <h3>Software Engineer</h3>
+        <h3>Machine Learning Engineer</h3>
 
         
         <h3>
           
-          <span>CA, US</span>
+          <span>United States</span>
           
         </h3>
         
@@ -332,13 +358,6 @@
         </li>
         
         
-        <li>
-          <a href="" aria-label="cv">
-            <i class="ai ai-cv big-icon"></i>
-          </a>
-        </li>
-
-        
           
         
         
@@ -348,8 +367,8 @@
           
         
         <li>
-          <a href="https://x.com/itsjaysuthar" target="_blank" rel="noopener">
-            <i class="fab fa-twitter big-icon"></i>
+          <a href="https://x.com/itsjaysuthar" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:1.6rem;height:1.6rem;vertical-align:middle;fill:currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
         </li>
         
@@ -397,9 +416,9 @@
     
     <h1>About me</h1>
 
-    <p>Skilled software engineer with 3+ years of experience in building scalable enterprise applications and implementing intelligent systems.
-      Proficient in full-stack development, API design, and cloud infrastructure, alongside data pipelines and AI solution development. 
-      Seeking to leverage technical expertise and innovation to create impactful software solutions. </p>
+    <p>Machine Learning Engineer with 4 years of experience building LLM and retrieval systems that run in production.
+      I specialize in retrieval-augmented generation, inference optimization, and the MLOps infrastructure that keeps ML systems reliable at scale, including drift detection, model registries, and automated retraining.
+      My work spans the full lifecycle: training models on millions of users, deploying quantized models, and building streaming pipelines that catch model decay before it reaches users. </p>
 <!--       In the past, I have worked on object pose estimation, segmentation, image-based visual servoing, and visual grounding at prestigious places like Nokia Bell Labs, Picsart AI Research, IIIT  -->
       
 <!--       Earlier I worked at IIIT Hyderabad, India on visual servoing and also with <a href="https://eecs.iiserb.ac.in/faculty_profile.php?id=OQ==&lname=c3VqaXQ=" target="_blank" rel="noopener">
@@ -416,11 +435,13 @@
       <div class="col-md-5">
         <h3>Interests</h3>
         <ul class="ul-interests">
-          
-          <li>Computer Vision: Segmentation, Image reconstruction, Object Pose estimation </li>
-          <li>Robotics: Navigation, Path Planning, Reinforcement Learning </li>
-          
-          
+
+          <li>Machine Learning &amp; Deep Learning</li>
+          <li>Generative Modeling: LLMs &amp; Foundation Models</li>
+          <li>Natural Language Processing &amp; Retrieval-Augmented Generation</li>
+          <li>Computer Vision &amp; Multimodal Learning</li>
+
+
         </ul>
       </div>
 
@@ -435,8 +456,15 @@
     <li>
       <i class="fa-li fas fa-graduation-cap"></i>
       <div class="description">
-        <p class="course">MS, Information Technology, 2022 - 2024</p>
+        <p class="course">MS, Computer Engineering, 2022 - 2024</p>
         <p class="institution">University of Texas, Dallas, USA</p>
+      </div>
+    </li>
+    <li>
+      <i class="fa-li fas fa-graduation-cap"></i>
+      <div class="description">
+        <p class="course">BE, Computer Engineering, 2016 - 2020</p>
+        <p class="institution">Gujarat Technological University, India</p>
       </div>
     </li>
   </ul>
@@ -452,29 +480,29 @@
       <div class="col-12 col-lg-8">
         <ul>
           <li>
-            <p><strong>[August 2024]</strong>: Started working as Software Engineer at Changing the Present</p>
+            <p><strong>[July 2025]</strong>: Joined <strong>Symplore</strong> as a Machine Learning Engineer!</p>
           </li>
           <li>
-            <p><strong>[March 2024]</strong>: Won the travel grant to attend <a href="https://2024.ieee-icra.org/" target="_blank" rel="noopener">ICRA 2024</a> in Yokohama, Japan</p>
+            <p><strong>[August 2024]</strong>: Joined <strong>BlueMax</strong> as a Machine Learning Engineer!</p>
           </li>
           <li>
-            <p><strong>[February 2024]</strong>: Joining <a href="https://www.bell-labs.com/" target="_blank" rel="noopener">Bell Labs</a> as a Spring co-op research intern!</p>
+            <p><strong>[May 2024]</strong>: Graduated with an MS from the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a>, earning the <span style="color:orange; font-weight:bold;">Bronze Medal &amp; Scholar with Recognition</span>.</p>
           </li>
           <li>
-            <p><strong>[January 2024]</strong>: <a href="https://arxiv.org/abs/2310.07021" target="_blank" rel="noopener">Pre-Trained Masked Image Model for Mobile Robot Navigation</a> is accepted to <span style="color:orange; font-weight:bold;">ICRA 2024!</span></p>
+            <p><strong>[January 2024]</strong>: My patent <em>Smart Device Operated and Controlled Electronic Virtual Switch</em> (No. 503842) was <span style="color:orange; font-weight:bold;">granted!</span></p>
           </li>
           <li>
-            <p><strong>[August 2023]</strong>: <a href="https://github.com/Picsart-AI-Research/SeMask-Segmentation" target="_blank" rel="noopener">SeMask</a> is accepted to <span style="color:orange; font-weight:bold;">NIVT Workshop at ICCV 2023!</span></p>
-          </li>
-<!--           <li>
-            <p><strong>[June 2023]</strong>: I will be joining <a href="https://www.bell-labs.com/" target="_blank" rel="noopener">Bell Labs</a> as a Robotics research intern for summer 2023!</p>
+            <p><strong>[August 2022]</strong>: Started my MS at the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a> on the Jindal School Graduate Study Scholarship.</p>
           </li>
           <li>
-            <p><strong>[March 2023]</strong>: <a href="https://raaslab.org/projects/FLIP-TD/" target="_blank" rel="noopener">FLIP-TD</a> is accepted at <span style="color:orange; font-weight:bold;">ICRA Workshop 2023!</span></p>
+            <p><strong>[2021]</strong>: Ranked in the <span style="color:orange; font-weight:bold;">top 0.2% (62nd globally)</span> in competitive programming on <a href="https://www.codechef.com/" target="_blank" rel="noopener">CodeChef</a>.</p>
           </li>
           <li>
-            <p><strong>[August 2022]</strong>: I started grad school at <a href="https://umd.edu/" target="_blank" rel="noopener">University of Maryland, College Park</a> in Robotics</p>
-          </li> -->
+            <p><strong>[2020]</strong>: Received the <strong>Undergraduate Star Researcher Award</strong> from Gujarat Technological University.</p>
+          </li>
+          <li>
+            <p><strong>[2018]</strong>: Won <strong>Ideathon'18</strong> and the <strong>14th Innovative Idea Competition (ISTE)</strong>.</p>
+          </li>
         </ul>
       </div>
     </div>
@@ -498,86 +526,81 @@
           <div class="col-12 col-lg-8">
             <div class="alert alert-note">
               <div>
-                For a list of my research works, please look at my <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=G4gza-gAAAAJ">google-scholar</a>.
+                For a list of my research works, please look at my <a href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ&hl=en" target="_blank" rel="noopener">google-scholar</a>.
               </div>
             </div>
-            <!-- New Publication Rows (Latest First) -->
+
+            <!-- Journals -->
+            <tr>
+              <td colspan="2" style="padding-top:0.9em;padding-bottom:0.9em;vertical-align:middle;">
+                <h3 style="margin:0;font-size:1.3rem;font-weight:600;line-height:1.2;">Journals</h3>
+              </td>
+            </tr>
             <tr>
               <td style="width:30%;vertical-align:middle">
-                <img src="/files/sketch.png" width="150" height="150" alt="Sketch-to-Skill">
+                <img src="/files/sign-language.png" width="150" height="150" alt="Sign Language Recognition">
               </td>
               <td style="width:70%;vertical-align:middle">
-                <h3>Sketch-to-Skill: Bootstrapping Robot Learning with Human Drawn Trajectory Sketches</h3>
+                <h3>Sign Language Recognition for Static and Dynamic Gestures</h3>
                 <p style="font-size:120%;">
-                  <a href="https://openreview.net/pdf?id=ww7JqIf494" target="_blank" rel="noopener">OpenReview (under review)</a>
+                  <b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, Avi Patel<br />
+                  <i>Global Journal of Computer Science and Technology (GJCST)</i>, 2021.
                 </p>
               </td>
             </tr>
             <tr>
               <td style="width:30%;vertical-align:middle">
-                <img src="/files/rebel.png" width="150" height="150" alt="REBEL">
+                <img src="/files/attendance.png" width="150" height="150" alt="Portable Attendance System">
               </td>
               <td style="width:70%;vertical-align:middle">
-                <h3>REBEL: A Regularization-Based Solution for Reward Overoptimization in Robotic Reinforcement Learning from Human Feedback</h3>
+                <h3>Portable Attendance System</h3>
                 <p style="font-size:120%;">
-                  Souradip Chakraborty*, <b>Anukriti Singh</b>*, Amisha Bhaskar, Pratap Tokekar, Dinesh Manocha, Amrit Singh Bedi<br />
-                  <a href="https://arxiv.org/abs/2312.14436v2" target="_blank" rel="noopener">Link</a>
+                  <b>Jay Suthar</b>, Aarya Brahmane<br />
+                  <i>International Journal of Science and Research (IJSR)</i>, 2019.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="width:30%;vertical-align:middle">
+                <img src="/files/virtual-switch.png" width="150" height="150" alt="Virtual Switch">
+              </td>
+              <td style="width:70%;vertical-align:middle">
+                <h3>Virtual Switch</h3>
+                <p style="font-size:120%;">
+                  Ankur Varma, <b>Jay Suthar</b>, Mehfuza Holia<br />
+                  <i>Journal of Operating Systems Development &amp; Trends (JoOSDT)</i>, 2018.
                 </p>
               </td>
             </tr>
 
-                        <!-- 3. Pre-Trained Masked Image Model for Mobile Robot Navigation (ICRA 2024) -->
-            <!-- 3. Pre-Trained Masked Image Model for Mobile Robot Navigation (ICRA 2024) -->
+            <!-- Article -->
             <tr>
-              <td style="width:30%;vertical-align:middle">
-                <img src="/files/icra.png" width="150" height="150" 
-                     alt="Pre-Trained Masked Image Model for Mobile Robot Navigation">
+              <td colspan="2" style="padding-top:0.9em;padding-bottom:0.9em;vertical-align:middle;">
+                <h3 style="margin:0;font-size:1.3rem;font-weight:600;line-height:1.2;">Article</h3>
               </td>
-              <td style="width:70%;vertical-align:middle">
-                <h3>Pre-Trained Masked Image Model for Mobile Robot Navigation</h3>
+            </tr>
+            <tr>
+              <td colspan="2" style="vertical-align:middle">
+                <h3>Design of Microstrip Patch Antenna for X-Band Applications</h3>
                 <p style="font-size:120%;">
-                  Vishnu Dutt Sharma, <b>Anukriti Singh</b>, Pratap Tokekar<br />
-                  <a href="https://arxiv.org/pdf/2310.07021" target="_blank" rel="noopener">
-                    ICRA 2024
-                  </a>
+                  <b>Jay Suthar</b>, Anish Vahora<br />
+                  <i>Birla Vishvakarma Mahavidyalaya (BVM) College of Engineering</i>, 2020.
                 </p>
               </td>
             </tr>
 
-            <!-- Existing Publication Rows -->
+            <!-- Patent -->
             <tr>
-              <td style="width:30%;vertical-align:middle">
-                <img src="https://anukritisinghh.github.io/files/fig_1_1.png" width="150" height="150" alt="FLIP-TD">
-              </td>
-              <td style="width:70%;vertical-align:middle">
-                <h3>FLIP-TD: Free Lunch Inpainting on Top-Down Images for Robotic Tasks</h3>
-                <p style="font-size:120%;">
-                  <b>Anukriti Singh</b>*, Vishnu Dutt Sharma*, Pratap Tokekar <br />
-                  <a href="https://openreview.net/forum?id=7c0WHyETaHC">ICRA Workshop 2023</a>
-                </p>
+              <td colspan="2" style="padding-top:0.9em;padding-bottom:0.9em;vertical-align:middle;">
+                <h3 style="margin:0;font-size:1.3rem;font-weight:600;line-height:1.2;">Patent</h3>
               </td>
             </tr>
             <tr>
-              <td style="width:30%;vertical-align:middle">
-                <img src="https://anukritisinghh.github.io/files/semask.png" width="150" height="150" alt="SeMask">
-              </td>
-              <td style="width:70%;vertical-align:middle">
-                <h3>SeMask: Semantically Masked Transformers for Semantic Segmentation</h3>
+              <td colspan="2" style="vertical-align:middle">
+                <h3>Smart Device Operated and Controlled Electronic Virtual Switch</h3>
                 <p style="font-size:120%;">
-                  Jitesh Jain, <b>Anukriti Singh</b>, Nikita Orlov, Zilong Huang, Jiachen Li, Steven Walton, Humphrey Shi <br />
-                  <a href="https://arxiv.org/abs/2112.12782">ICCV Workshop 2023</a>
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td style="width:30%;vertical-align:middle">
-                <img src="https://anukritisinghh.github.io/files/fnas-ps.png" width="150" height="150" alt="Quantum Evolutions">
-              </td>
-              <td style="width:70%;vertical-align:middle">
-                <h3>Characterizing Quantum Evolutions via a Recommender System</h3>
-                <p style="font-size:120%;">
-                  Priya Batra, <b>Anukriti Singh</b>, T. S. Mahesh <br />
-                  <a href="https://quantum-journal.org/papers/q-2021-12-06-598/pdf/">Quantum Journal 2021</a>
+                  Ankur Varma, <b>Jay Suthar</b>, Dr. Mehfuza Holia, Dr. Milendrakumar Manilal Solanki<br />
+                  Patent No. 503842 &middot; Granted Jan 28, 2024.
                 </p>
               </td>
             </tr>
@@ -608,7 +631,7 @@
 
 <div class="row">
   <div class="col-12 col-lg-4 section-heading">
-    <h1>Research Experience</h1>
+    <h1>Experience</h1>
     
   </div>
   <div class="col-12 col-lg-8">
@@ -616,7 +639,7 @@
 
 
       <div class="row experience">
-      
+
       <div class="col-auto text-center flex-column d-none d-sm-flex">
         <div class="row h-50">
           <div class="col ">&nbsp;</div>
@@ -633,29 +656,25 @@
       <div class="col py-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Bell Labs Robotics Co-op</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://www.bell-labs.com/" target="_blank" rel="noopener"> Nokia Bell Labs</a></h4>
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Machine Learning Engineer</h4>
+            <h4 class="card-title exp-company text-muted my-0">Symplore</h4>
             <div class="text-muted exp-meta">
-              Feb 2024 –
-              
-                May 2024
-              
-              
-                <span class="middot-divider"></span>
-                <span>New Jersey, USA</span>
-              
+              July 2025 –
+
+                Present
+
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    
+
       <div class="row experience">
-      
+
       <div class="col-auto text-center flex-column d-none d-sm-flex">
         <div class="row h-50">
-          <div class="col ">&nbsp;</div>
+          <div class="col border-right">&nbsp;</div>
           <div class="col">&nbsp;</div>
         </div>
         <div class="m-2">
@@ -669,179 +688,47 @@
       <div class="col py-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Bell Labs Robotics Intern</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://www.bell-labs.com/" target="_blank" rel="noopener"> Nokia Bell Labs</a></h4>
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Machine Learning Engineer</h4>
+            <h4 class="card-title exp-company text-muted my-0">BlueMax</h4>
             <div class="text-muted exp-meta">
-              June 2023 –
-              
-                August 2023
-              
-              
-                <span class="middot-divider"></span>
-                <span>New Jersey, USA</span>
-              
+              May 2024 –
+
+                July 2025
+
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    
+
       <div class="row experience">
-      
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-        <div class="m-2">
-          <span class="badge badge-pill border ">&nbsp;</span>
-        </div>
-        <div class="row h-50">
-          <div class="col border-right">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div class="col py-2">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">AI Researcher</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://picsart.com/" target="_blank" rel="noopener"> Picsart AI Lab</a></h4>
-            <div class="text-muted exp-meta">
-              July 2021 –
-              
-                March 2022
-              
-              
-                <span class="middot-divider"></span>
-                <span>USA (Remote)</span>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-                              
-    <div class="row experience">
-      
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-        <div class="m-2">
-          <span class="badge badge-pill border ">&nbsp;</span>
-        </div>
-        <div class="row h-50">
-          <div class="col border-right">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div class="col py-2">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Research Assistant</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://robotics.iiit.ac.in/" target="_blank" rel="noopener"> RRC, IIIT Hyderabad</a></h4>
-            <div class="text-muted exp-meta">
-              July 2021 –
-              
-                March 2022
-              
-              
-                <span class="middot-divider"></span>
-                <span>Hyderabad, India (Remote)</span>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
+      <div class="col-auto text-center flex-column d-none d-sm-flex">
+        <div class="row h-50">
+          <div class="col border-right">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+        <div class="m-2">
+          <span class="badge badge-pill border ">&nbsp;</span>
+        </div>
+        <div class="row h-50">
+          <div class="col ">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+      </div>
 
-    
-    <div class="row experience">
-      
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-        <div class="m-2">
-          <span class="badge badge-pill border ">&nbsp;</span>
-        </div>
-        <div class="row h-50">
-          <div class="col border-right">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-      </div>
-      
       <div class="col py-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Research Assistant</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://sites.google.com/view/m00nlab/home?authuser=0" target="_blank" rel="noopener"> Multi-robot Autonomy (MOON) Lab</a></h4>
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Software Engineer (ML)</h4>
+            <h4 class="card-title exp-company text-muted my-0"><a href="https://www.infosys.com/" target="_blank" rel="noopener"> Infosys</a></h4>
             <div class="text-muted exp-meta">
-              Jan 2021 –
-              
-                June 2021
-              
-              
-                <span class="middot-divider"></span>
-                <span>Bhopal, India (Remote)</span>
-              
+              July 2020 –
+
+                July 2022
+
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row experience">
-      
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-        <div class="row h-50">
-          <div class="col border-right">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-        <div class="m-2">
-          <span class="badge badge-pill border ">&nbsp;</span>
-        </div>
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-      </div>
-      
-      <div class="col py-2">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Visiting Student</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="https://www.humphreyshi.com/people" target="_blank" rel="noopener">SHI Lab, UO, USA</a></h4>
-            <div class="text-muted exp-meta">
-              February 2020 –
-              
-                October 2020
-              
-              
-                <span class="middot-divider"></span>
-                <span>Eugene, Oregon, USA</span>
-              
-            </div>
-<!--             <div class="card-text">Researched on visual grounding and dense captioining and finding a common ground between the two.</div> -->
           </div>
         </div>
       </div>
@@ -1111,11 +998,11 @@
         <ul class="fa-ul">
           <li>
             <i class="fa-li fas fa-envelope fa-2x"></i>
-            <a href="mailto:singhanukriti98@gmail.com">singhanukriti98@gmail.com</a>
+            <a href="mailto:jaysutharswe@gmail.com">jaysutharswe@gmail.com</a>
           </li>
           <li>
-            <i class="fa-li fab fa-twitter fa-2x"></i>
-            <a href="https://twitter.com/singhanukriti" target="_blank" rel="noopener">Contact</a>
+            <span class="fa-li"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:1.4em;height:1.4em;vertical-align:middle;fill:currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+            <a href="https://x.com/itsjaysuthar" target="_blank" rel="noopener">Contact</a>
           </li>
         </ul>
       </div>
