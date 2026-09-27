@@ -1,4 +1,4 @@
-# jayysuthar.github.io
+# jaysde.github.io
 
 Personal website of **Jay Suthar** — Machine Learning Engineer.
 
