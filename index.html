@@ -8,6 +8,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 4.8.0">
 
+  <script>document.documentElement.className += ' js';</script>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 
   <meta name="author" content="Jay Suthar">
 
@@ -149,10 +154,19 @@
        background-attachment:fixed, which repaints on every scroll frame). */
     body.dark { background: #1d1e27 !important; color: #e6e8ef !important; }
     body.dark::before {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
       background:
         radial-gradient(1100px 560px at 82% -8%, rgba(255, 255, 255, 0.035), transparent 60%),
         linear-gradient(165deg, #1d1e27 0%, #23242f 55%, #1b1c24 100%);
+    }
+    /* Constellation network: drifting nodes linked by faint lines */
+    #bg-net { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: block; }
+
+    /* Reveal-on-scroll: only active when JS is present and motion is allowed,
+       so content is never hidden if JS is slow/off (no flash of empty page). */
+    @media (prefers-reduced-motion: no-preference) {
+      html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+      html.js .reveal.in { opacity: 1; transform: none; }
     }
     /* Let the backdrop show through; faint banding separates sections */
     .dark .home-section { background: transparent !important; }
@@ -324,6 +338,7 @@
     .pubtab-panel { animation: joblist-fade .35s ease; }
     .pubtab-panel[hidden] { display: none; }
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
+    .pub-card { text-decoration: none !important; color: inherit !important; display: block; }
     .pub-item { display: flex; gap: 18px; align-items: center; padding: 16px 18px !important; }
     .pub-thumb {
       flex: 0 0 auto; width: 92px; height: 92px; object-fit: cover;
@@ -428,6 +443,9 @@
 
 <body id="top" class="dark" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
 
+  <canvas id="bg-net" aria-hidden="true"></canvas>
+
+
 
 
   
@@ -514,7 +532,7 @@
 
       
       
-      <img class="avatar avatar-circle" src="/authors/admin/ME.jpg" alt="Jay Suthar">
+      <img class="avatar avatar-circle" src="/authors/admin/ME.jpg" alt="Jay Suthar" decoding="async" fetchpriority="high">
       
 
       <div class="portrait-title">
@@ -577,7 +595,7 @@
 
 
 <div class="row">
-  <div class="col-12 section-heading">
+  <div class="col-12 section-heading reveal">
     <h1>Experience</h1>
 
   </div>
@@ -585,7 +603,7 @@
 
 
 
-      <div class="joblist">
+      <div class="joblist reveal">
         <div class="joblist-tabs" role="tablist" aria-label="Work experience">
           <button class="joblist-tab active" role="tab" aria-selected="true" data-index="0">Symplore</button>
           <button class="joblist-tab" role="tab" aria-selected="false" data-index="1">BlueMax</button>
@@ -639,12 +657,12 @@
 <section id="pubs" class="home-section wg-blank" style="padding: 20px 0 20px 0;">
   <div class="container">
     <div class="row">
-      <div class="col-12 section-heading">
+      <div class="col-12 section-heading reveal">
         <h1>Publications</h1>
       </div>
       <div class="col-12">
 
-        <div class="pubtabs">
+        <div class="pubtabs reveal">
           <div class="pubtabs-tabs" role="tablist" aria-label="Publications">
             <button class="pubtab active" role="tab" aria-selected="true" data-index="0">Papers</button>
             <button class="pubtab" role="tab" aria-selected="false" data-index="1">Patents</button>
@@ -654,38 +672,38 @@
           <div class="pubtab-panel active" role="tabpanel" data-index="0">
             <div class="pub-list">
 
-              <div class="card pub-card">
+              <a class="card pub-card" href="/publication/sign-language-recognition.html">
                 <div class="card-body pub-item">
-                  <img class="pub-thumb" src="/files/sign-language.png" alt="Sign Language Recognition">
+                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/sign-language.png" alt="Sign Language Recognition">
                   <div class="pub-info">
                     <h4 class="pub-title">Sign Language Recognition for Static and Dynamic Gestures</h4>
                     <p class="pub-authors"><b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, Avi Patel</p>
                     <p class="pub-venue"><i>Global Journal of Computer Science and Technology (GJCST)</i> &middot; 2021</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <div class="card pub-card">
+              <a class="card pub-card" href="/publication/portable-attendance-system.html">
                 <div class="card-body pub-item">
-                  <img class="pub-thumb" src="/files/attendance.png" alt="Portable Attendance System">
+                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/attendance.png" alt="Portable Attendance System">
                   <div class="pub-info">
                     <h4 class="pub-title">Portable Attendance System</h4>
                     <p class="pub-authors"><b>Jay Suthar</b>, Aarya Brahmane</p>
                     <p class="pub-venue"><i>International Journal of Science and Research (IJSR)</i> &middot; 2019</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <div class="card pub-card">
+              <a class="card pub-card" href="/publication/virtual-switch.html">
                 <div class="card-body pub-item">
-                  <img class="pub-thumb" src="/files/virtual-switch.png" alt="Virtual Switch">
+                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/virtual-switch.png" alt="Virtual Switch">
                   <div class="pub-info">
                     <h4 class="pub-title">Virtual Switch</h4>
                     <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Mehfuza Holia</p>
                     <p class="pub-venue"><i>Journal of Operating Systems Development &amp; Trends (JoOSDT)</i> &middot; 2018</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
             </div>
           </div>
@@ -693,16 +711,16 @@
           <div class="pubtab-panel" role="tabpanel" data-index="2" hidden>
             <div class="pub-list">
 
-              <div class="card pub-card">
+              <a class="card pub-card" href="/publication/x-band-antenna.html">
                 <div class="card-body pub-item">
-                  <img class="pub-thumb" src="/files/x-band-antenna.png" alt="Microstrip Patch Antenna for X-Band">
+                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/x-band-antenna.png" alt="Microstrip Patch Antenna for X-Band">
                   <div class="pub-info">
                     <h4 class="pub-title">Design of Microstrip Patch Antenna for X-Band Applications</h4>
                     <p class="pub-authors"><b>Jay Suthar</b>, Anish Vahora</p>
                     <p class="pub-venue"><i>Birla Vishvakarma Mahavidyalaya (BVM) College of Engineering</i> &middot; 2020</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
             </div>
           </div>
@@ -710,7 +728,7 @@
           <div class="pubtab-panel" role="tabpanel" data-index="1" hidden>
             <div class="pub-list">
 
-              <div class="card pub-card">
+              <a class="card pub-card" href="/publication/smart-device-virtual-switch.html">
                 <div class="card-body pub-item">
                   <div class="pub-info">
                     <h4 class="pub-title">Smart Device Operated and Controlled Electronic Virtual Switch</h4>
@@ -718,7 +736,7 @@
                     <p class="pub-venue">Patent No. 503842 &middot; Granted Jan 28, 2024</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
             </div>
           </div>
@@ -749,12 +767,12 @@
 
 
 <div class="row">
-  <div class="col-12 section-heading">
+  <div class="col-12 section-heading reveal">
     <h1>Projects</h1>
   </div>
   <div class="col-12">
 
-      <div class="proj-sub">
+      <div class="proj-sub reveal">
         <div class="proj-sub-head">
           <div class="proj-nav">
             <button class="proj-arrow" type="button" data-dir="-1" aria-label="Scroll projects left">&#8249;</button>
@@ -1113,7 +1131,26 @@
       });
     });
   });
+
+  /* Reveal-on-scroll: fade/slide elements in as they enter the viewport. */
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!items.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
 </script>
+
+  <script src="/js/constellation.js"></script>
 
 </body>
 </html>
