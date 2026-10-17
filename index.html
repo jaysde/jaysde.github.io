@@ -119,14 +119,17 @@
     #projects .row > [class*="col-"] { flex: 0 0 100% !important; max-width: 100% !important; }
     /* Submerge the navbar: a translucent glass bar that blends into the page
        (frosted blur over the gradient) with just a hairline bottom border. */
+    /* Solid navbar background so scrolled content never shows through it;
+       matches the top of the page gradient so it blends at the top. */
     .dark .navbar {
-      background: rgba(27, 28, 38, 0.72) !important;
-      -webkit-backdrop-filter: saturate(160%) blur(12px);
-      backdrop-filter: saturate(160%) blur(12px);
-      box-shadow: none !important;
+      background: #1d1e27 !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35) !important;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
     }
-    .dark .navbar-collapse { background-color: rgba(27, 28, 38, 0.96) !important; }
+    .dark .navbar-collapse { background-color: transparent !important; }
+    @media (max-width: 991px) {
+      .dark .navbar-collapse { background-color: #1d1e27 !important; }
+    }
     /* Richer navbar typography: brighter text, bolder weight, a touch more size and tracking. */
     #navbar-main .navbar-nav .nav-link,
     #navbar-main .main-menu-item ul li .nav-link {
@@ -193,6 +196,38 @@
     #profile .portrait-title h2 { font-weight: 700; letter-spacing: .3px; }
     #profile .portrait-title h3 { color: #c6cad8 !important; font-weight: 500; }
 
+    /* About: News block inside column 2, capped to column 1's height (desktop). */
+    .about-news { margin-top: 18px; }
+    .about-news-title {
+      margin: 0 0 10px; font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #c6cad8;
+    }
+    .about-news-list { list-style: none; padding: 0; margin: 0; }
+    .about-news-list li { position: relative; padding-left: 20px; margin-bottom: 8px; }
+    .about-news-list li::before {
+      content: ""; position: absolute; left: 0; top: 10px;
+      width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.35);
+    }
+    .about-news-list li p { margin: 0; color: #c6cad8; line-height: 1.5; font-size: 0.92rem; }
+    .about-news-extra { display: none; }
+    .about-news-list.expanded .about-news-extra { display: list-item; }
+    .about-news-toggle {
+      margin-top: 8px; padding: 2px 0; background: none; border: none;
+      color: #cbd0dc; font-weight: 600; font-size: 13px; cursor: pointer;
+      transition: color .2s ease; align-self: flex-start;
+    }
+    .about-news-toggle:hover { color: #ffffff; }
+    @media (min-width: 992px) {
+      #about-row { align-items: flex-start; }
+      .about-col { display: flex; flex-direction: column; }
+      /* The news list scrolls; its max-height is set by JS so column 2
+         never grows taller than column 1 (the photo). */
+      .about-news { display: flex; flex-direction: column; min-height: 0; }
+      .about-news-list { overflow-y: auto; padding-right: 8px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+      .about-news-list::-webkit-scrollbar { width: 6px; }
+      .about-news-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 6px; }
+    }
+
     /* Cards: elevated glass panels that lift and glow on hover */
     .dark .card {
       background: linear-gradient(145deg, #2c2f3d, #24262f) !important;
@@ -232,6 +267,8 @@
       transition: color .2s ease, background .2s ease, border-color .2s ease;
     }
     .joblist-tab:hover { color: #e6e8ef; background: rgba(255, 255, 255, 0.04); }
+    .joblist-tab:focus { outline: none; box-shadow: none; }
+    .joblist-tab:focus-visible { color: #ffffff; }
     .joblist-tab.active {
       color: #ffffff; background: rgba(255, 255, 255, 0.05); border-left-color: #ffffff;
     }
@@ -242,8 +279,12 @@
     .joblist-company { color: #c6cad8; font-weight: 500; }
     .joblist-company a { color: #ffffff !important; }
     .joblist-duration {
-      margin: 0 0 14px; font-size: 0.85rem; color: #9aa0b8;
+      margin: 0 0 10px; font-size: 0.85rem; color: #9aa0b8;
       font-family: 'Roboto Mono', monospace; letter-spacing: 0.02em;
+    }
+    .joblist-project {
+      margin: 0 0 14px; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #e6e8ef;
     }
     .job-description { list-style: none; padding: 0; margin: 0; }
     .job-description li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #c6cad8; line-height: 1.55; }
@@ -272,14 +313,24 @@
     .home-section a:not(.nav-link):not(.navbar-brand) { color: #cbd0dc; transition: color .2s ease; }
     .home-section a:not(.nav-link):not(.navbar-brand):hover { color: #ffffff; }
 
-    /* Publications: category labels + card entries with thumbnail */
-    .pub-category {
-      margin: 26px 0 14px;
-      font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: #c6cad8;
+    /* Publications: horizontal tabs (Papers / Articles / Patents) */
+    .pubtabs-tabs {
+      display: flex; gap: 4px; overflow-x: auto;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+      margin: 6px 0 22px;
     }
-    .pub-category:first-of-type { margin-top: 8px; }
+    .pubtab {
+      background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -2px;
+      padding: 10px 20px; white-space: nowrap; cursor: pointer;
+      color: #9aa0b8; font-size: 14px; font-weight: 600; letter-spacing: 0.05em;
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .pubtab:hover { color: #e6e8ef; }
+    .pubtab:focus { outline: none; box-shadow: none; }
+    .pubtab:focus-visible { color: #ffffff; }
+    .pubtab.active { color: #ffffff; border-bottom-color: #ffffff; }
+    .pubtab-panel { animation: joblist-fade .35s ease; }
+    .pubtab-panel[hidden] { display: none; }
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item { display: flex; gap: 18px; align-items: center; padding: 16px 18px !important; }
     .pub-thumb {
@@ -305,6 +356,59 @@
       color: #c6cad8 !important;
     }
     #pubs .alert-note a { color: #ffffff !important; text-decoration: underline !important; }
+
+    /* ---- Projects: horizontally scrollable tile carousels with arrow controls ---- */
+    .proj-sub { margin-bottom: 34px; }
+    .proj-sub:last-child { margin-bottom: 0; }
+    .proj-sub-head { display: flex; align-items: center; justify-content: flex-end; margin-bottom: 14px; }
+    .proj-sub-title {
+      margin: 0; font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #c6cad8;
+    }
+    .proj-nav { display: flex; gap: 8px; }
+    .proj-arrow {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #c6cad8; font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .proj-arrow:hover { color: #ffffff; background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.35); }
+    .proj-track {
+      display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth;
+      scroll-snap-type: x proximity; padding: 2px 2px 10px;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+    .proj-track::-webkit-scrollbar { height: 6px; }
+    .proj-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 6px; }
+    .proj-tile {
+      flex: 0 0 280px; scroll-snap-align: start;
+      display: flex; flex-direction: column; overflow: hidden;
+      background: linear-gradient(145deg, #2c2f3d, #24262f);
+      border: 1px solid #3a3e52; border-radius: 14px;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .proj-tile:hover {
+      transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+    }
+    .proj-thumb {
+      height: 130px; background:
+        radial-gradient(120px 80px at 30% 20%, rgba(255,255,255,0.08), transparent 70%),
+        linear-gradient(135deg, #343848, #2a2d3a);
+      border-bottom: 1px solid #3a3e52;
+    }
+    .proj-tile-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+    .proj-tile-title { margin: 0; font-size: 1.05rem; font-weight: 600; color: #f3f4f8; }
+    .proj-tile-desc { margin: 0; font-size: 0.9rem; color: #c6cad8; line-height: 1.5; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+    .proj-tags span {
+      font-size: 0.72rem; letter-spacing: 0.03em; color: #c6cad8;
+      padding: 3px 9px; border-radius: 20px;
+      background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    @media (max-width: 575px) { .proj-tile { flex-basis: 78%; } }
 
     /* Footer: muted text with a gently beating heart */
     .site-footer .powered-by { color: #9aa0b8; font-size: 14px; }
@@ -366,13 +470,12 @@
 
 
         <li class="nav-item">
-          <a class="nav-link " href="/#pubs" data-target="#pubs"><span>Publications</span></a>
+          <a class="nav-link " href="/#experience" data-target="#experience"><span>Experience</span></a>
         </li>
 
 
-
         <li class="nav-item">
-          <a class="nav-link " href="/#experience" data-target="#experience"><span>Experience</span></a>
+          <a class="nav-link " href="/#pubs" data-target="#pubs"><span>Publications</span></a>
         </li>
 
         <li class="nav-item">
@@ -387,16 +490,16 @@
         <a class="nav-link" href="mailto:jaysutharsde@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+        <a class="nav-link" href="https://www.linkedin.com/in/jaysde" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="https://x.com/jaysde36" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:1.1rem;height:1.1rem;vertical-align:middle;fill:currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://www.linkedin.com/in/jaysde" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a class="nav-link" href="https://github.com/jaysde" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/jaysde" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a class="nav-link" href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
       </li>
     </ul>
 
@@ -410,8 +513,8 @@
     <div class="container">
      
 
-<div class="row">
-  <div class="col-12 col-lg-4">
+<div class="row" id="about-row">
+  <div class="col-12 col-lg-4" id="about-pic">
     <div id="profile">
 
       
@@ -435,18 +538,28 @@
 
     </div>
   </div>
-  <div class="col-12 col-lg-8">
+  <div class="col-12 col-lg-8 about-col">
 
-    
     <h1>About me</h1>
 
     <p>Software Engineer with 4 years of experience building LLM and retrieval systems that run in production.
       I specialize in retrieval-augmented generation, inference optimization, and the MLOps infrastructure that keeps ML systems reliable at scale, including drift detection, model registries, and automated retraining.
       My work spans the full lifecycle: training models on millions of users, deploying quantized models, and building streaming pipelines that catch model decay before it reaches users. </p>
 
-
-    <div class="row">
-      <!-- Interests & Education removed for now — to be re-added later. -->
+    <div class="about-news">
+      <h3 class="about-news-title">News</h3>
+      <ul class="about-news-list">
+        <li><p><strong>[July 2025]</strong>: Joined <strong>Symplore</strong> as a Machine Learning Engineer!</p></li>
+        <li><p><strong>[May 2024]</strong>: Graduated with an MS from the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a>, earning the Bronze Medal &amp; Scholar with Recognition.</p></li>
+        <li><p><strong>[January 2024]</strong>: Joined <strong>BlueMax</strong> as a Machine Learning Engineer!</p></li>
+        <li class="about-news-extra"><p><strong>[January 2024]</strong>: My patent <em>Smart Device Operated and Controlled Electronic Virtual Switch</em> (No. 503842) was granted!</p></li>
+        <li class="about-news-extra"><p><strong>[August 2022]</strong>: Started my MS at the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a> on the Jindal School Graduate Study Scholarship.</p></li>
+        <li class="about-news-extra"><p><strong>[April 2021]</strong>: Ranked in the top 0.2% (62nd globally) in competitive programming on <a href="https://www.codechef.com/" target="_blank" rel="noopener">CodeChef</a>.</p></li>
+        <li class="about-news-extra"><p><strong>[January 2020]</strong>: Joined <a href="https://www.infosys.com/" target="_blank" rel="noopener">Infosys</a> as a Software Engineer.</p></li>
+        <li class="about-news-extra"><p><strong>[2020]</strong>: Received the <strong>Undergraduate Star Researcher Award</strong> from Gujarat Technological University.</p></li>
+        <li class="about-news-extra"><p><strong>[2018]</strong>: Won <strong>Ideathon'18</strong> and the <strong>14th Innovative Idea Competition (ISTE)</strong>.</p></li>
+      </ul>
+      <button type="button" class="about-news-toggle" aria-expanded="false">Read more</button>
     </div>
 
   </div><!-- /.col-lg-8 (About me) -->
@@ -456,106 +569,6 @@
 
 
 
-  
-  
-
-  
-  
-
-<section id="pubs" class="home-section wg-blank" style="padding: 20px 0 20px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 section-heading">
-        <h1>Publications</h1>
-      </div>
-      <div class="col-12">
-
-        <div class="alert alert-note">
-          <div>
-            For a list of my research works, please look at my <a href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ&hl=en" target="_blank" rel="noopener">google-scholar</a>.
-          </div>
-        </div>
-
-        <h3 class="pub-category">Journals</h3>
-        <div class="pub-list">
-
-          <div class="card pub-card">
-            <div class="card-body pub-item">
-              <img class="pub-thumb" src="/files/sign-language.png" alt="Sign Language Recognition">
-              <div class="pub-info">
-                <h4 class="pub-title">Sign Language Recognition for Static and Dynamic Gestures</h4>
-                <p class="pub-authors"><b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, Avi Patel</p>
-                <p class="pub-venue"><i>Global Journal of Computer Science and Technology (GJCST)</i> &middot; 2021</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card pub-card">
-            <div class="card-body pub-item">
-              <img class="pub-thumb" src="/files/attendance.png" alt="Portable Attendance System">
-              <div class="pub-info">
-                <h4 class="pub-title">Portable Attendance System</h4>
-                <p class="pub-authors"><b>Jay Suthar</b>, Aarya Brahmane</p>
-                <p class="pub-venue"><i>International Journal of Science and Research (IJSR)</i> &middot; 2019</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card pub-card">
-            <div class="card-body pub-item">
-              <img class="pub-thumb" src="/files/virtual-switch.png" alt="Virtual Switch">
-              <div class="pub-info">
-                <h4 class="pub-title">Virtual Switch</h4>
-                <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Mehfuza Holia</p>
-                <p class="pub-venue"><i>Journal of Operating Systems Development &amp; Trends (JoOSDT)</i> &middot; 2018</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <h3 class="pub-category">Article</h3>
-        <div class="pub-list">
-
-          <div class="card pub-card">
-            <div class="card-body pub-item">
-              <img class="pub-thumb" src="/files/x-band-antenna.png" alt="Microstrip Patch Antenna for X-Band">
-              <div class="pub-info">
-                <h4 class="pub-title">Design of Microstrip Patch Antenna for X-Band Applications</h4>
-                <p class="pub-authors"><b>Jay Suthar</b>, Anish Vahora</p>
-                <p class="pub-venue"><i>Birla Vishvakarma Mahavidyalaya (BVM) College of Engineering</i> &middot; 2020</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <h3 class="pub-category">Patent</h3>
-        <div class="pub-list">
-
-          <div class="card pub-card">
-            <div class="card-body pub-item">
-              <div class="pub-info">
-                <h4 class="pub-title">Smart Device Operated and Controlled Electronic Virtual Switch</h4>
-                <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Dr. Mehfuza Holia, Dr. Milendrakumar Manilal Solanki</p>
-                <p class="pub-venue">Patent No. 503842 &middot; Granted Jan 28, 2024</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-  
-  
-
-  
-  
-  
   
   
 
@@ -589,30 +602,33 @@
           <div class="joblist-panel active" role="tabpanel" data-index="0">
             <h4 class="joblist-job-title">Machine Learning Engineer <span class="joblist-company">@ <a href="https://symplore.com/" target="_blank" rel="noopener">Symplore</a></span></h4>
             <p class="joblist-duration">July 2025 – July 2026</p>
+            <p class="joblist-project">Claims Triage ML Platform</p>
             <ul class="job-description">
-              <li>Describe a key system or project you built here.</li>
-              <li>Add a measurable result or impact.</li>
-              <li>Mention the models, tools, or scale involved.</li>
+              <li>Built and owned the serving + MLOps platform for a multi-task transformer that routes insurance claims and estimates cost from claim text plus 68 structured fields.</li>
+              <li>Migrated serving to a dedicated EKS nodegroup with gRPC + INT8 quantization, cutting p95 latency ~340ms → ~118ms against a 150ms SLO.</li>
+              <li>Added automated drift monitoring and a gated promotion pipeline, shrinking detection-to-fix time from ~6 weeks to ~9 days and lifting straight-through claim processing from 31% to 44%.</li>
             </ul>
           </div>
 
           <div class="joblist-panel" role="tabpanel" data-index="1" hidden>
             <h4 class="joblist-job-title">Machine Learning Engineer <span class="joblist-company">@ BlueMax</span></h4>
             <p class="joblist-duration">January 2024 – July 2025</p>
+            <p class="joblist-project">Enterprise RAG Knowledge Assistant</p>
             <ul class="job-description">
-              <li>Describe a key system or project you built here.</li>
-              <li>Add a measurable result or impact.</li>
-              <li>Mention the models, tools, or scale involved.</li>
+              <li>Built a self-hosted RAG system over a 50K+ document knowledge base, keeping HR/IT data inside a private VPC.</li>
+              <li>Rebuilt retrieval with hybrid dense + BM25 search and reranking, raising Recall@5 from ~0.61 to ~0.78 and cutting hallucinations from ~12% to ~3%.</li>
+              <li>Cut p95 time-to-first-token ~60% via quantization, a GPU migration, and caching, while roughly halving infra cost.</li>
             </ul>
           </div>
 
           <div class="joblist-panel" role="tabpanel" data-index="2" hidden>
             <h4 class="joblist-job-title">Software Engineer (ML) <span class="joblist-company">@ <a href="https://www.infosys.com/" target="_blank" rel="noopener">Infosys</a></span></h4>
             <p class="joblist-duration">January 2020 – July 2022</p>
+            <p class="joblist-project">Telecom Plan Recommendation Engine</p>
             <ul class="job-description">
-              <li>Describe a key system or project you built here.</li>
-              <li>Add a measurable result or impact.</li>
-              <li>Mention the models, tools, or scale involved.</li>
+              <li>Built an XGBoost model predicting 14-day upgrade probability for 5M+ users, lifting conversion 18% over the legacy rules system.</li>
+              <li>Owned nightly Airflow ETL pipelines turning raw billing/CDR data into ~50 features per user, with automated quality checks.</li>
+              <li>Deployed as a containerized FastAPI service with drift monitoring, cutting p95 latency 25% over the prior monolith.</li>
             </ul>
           </div>
 
@@ -625,6 +641,113 @@
     </div>
   </section>
 
+<section id="pubs" class="home-section wg-blank" style="padding: 20px 0 20px 0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 section-heading">
+        <h1>Publications</h1>
+      </div>
+      <div class="col-12">
+
+        <div class="pubtabs">
+          <div class="pubtabs-tabs" role="tablist" aria-label="Publications">
+            <button class="pubtab active" role="tab" aria-selected="true" data-index="0">Papers</button>
+            <button class="pubtab" role="tab" aria-selected="false" data-index="1">Patents</button>
+            <button class="pubtab" role="tab" aria-selected="false" data-index="2">Articles</button>
+          </div>
+
+          <div class="pubtab-panel active" role="tabpanel" data-index="0">
+            <div class="pub-list">
+
+              <div class="card pub-card">
+                <div class="card-body pub-item">
+                  <img class="pub-thumb" src="/files/sign-language.png" alt="Sign Language Recognition">
+                  <div class="pub-info">
+                    <h4 class="pub-title">Sign Language Recognition for Static and Dynamic Gestures</h4>
+                    <p class="pub-authors"><b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, Avi Patel</p>
+                    <p class="pub-venue"><i>Global Journal of Computer Science and Technology (GJCST)</i> &middot; 2021</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card pub-card">
+                <div class="card-body pub-item">
+                  <img class="pub-thumb" src="/files/attendance.png" alt="Portable Attendance System">
+                  <div class="pub-info">
+                    <h4 class="pub-title">Portable Attendance System</h4>
+                    <p class="pub-authors"><b>Jay Suthar</b>, Aarya Brahmane</p>
+                    <p class="pub-venue"><i>International Journal of Science and Research (IJSR)</i> &middot; 2019</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card pub-card">
+                <div class="card-body pub-item">
+                  <img class="pub-thumb" src="/files/virtual-switch.png" alt="Virtual Switch">
+                  <div class="pub-info">
+                    <h4 class="pub-title">Virtual Switch</h4>
+                    <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Mehfuza Holia</p>
+                    <p class="pub-venue"><i>Journal of Operating Systems Development &amp; Trends (JoOSDT)</i> &middot; 2018</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pubtab-panel" role="tabpanel" data-index="2" hidden>
+            <div class="pub-list">
+
+              <div class="card pub-card">
+                <div class="card-body pub-item">
+                  <img class="pub-thumb" src="/files/x-band-antenna.png" alt="Microstrip Patch Antenna for X-Band">
+                  <div class="pub-info">
+                    <h4 class="pub-title">Design of Microstrip Patch Antenna for X-Band Applications</h4>
+                    <p class="pub-authors"><b>Jay Suthar</b>, Anish Vahora</p>
+                    <p class="pub-venue"><i>Birla Vishvakarma Mahavidyalaya (BVM) College of Engineering</i> &middot; 2020</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pubtab-panel" role="tabpanel" data-index="1" hidden>
+            <div class="pub-list">
+
+              <div class="card pub-card">
+                <div class="card-body pub-item">
+                  <div class="pub-info">
+                    <h4 class="pub-title">Smart Device Operated and Controlled Electronic Virtual Switch</h4>
+                    <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Dr. Mehfuza Holia, Dr. Milendrakumar Manilal Solanki</p>
+                    <p class="pub-venue">Patent No. 503842 &middot; Granted Jan 28, 2024</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+
   <section id="projects" class="home-section wg-experience   " style="padding: 20px 0 20px 0;" >
     <div class="container">
 
@@ -636,33 +759,80 @@
   </div>
   <div class="col-12">
 
-      <div class="row experience">
-
-      <div class="col-auto text-center flex-column d-none d-sm-flex">
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-        <div class="m-2">
-          <span class="badge badge-pill border ">&nbsp;</span>
-        </div>
-        <div class="row h-50">
-          <div class="col ">&nbsp;</div>
-          <div class="col">&nbsp;</div>
-        </div>
-      </div>
-
-      <div class="col py-2">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title exp-title text-muted mt-0 mb-1">Project Title</h4>
-            <h4 class="card-title exp-company text-muted my-0"><a href="#" target="_blank" rel="noopener">Role / Link</a></h4>
-            <div class="text-muted exp-meta">Year</div>
-            <div class="card-text">Short description of the project.</div>
+      <div class="proj-sub">
+        <div class="proj-sub-head">
+          <div class="proj-nav">
+            <button class="proj-arrow" type="button" data-dir="-1" aria-label="Scroll projects left">&#8249;</button>
+            <button class="proj-arrow" type="button" data-dir="1" aria-label="Scroll projects right">&#8250;</button>
           </div>
         </div>
+        <div class="proj-track">
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project One</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Python</span><span>ML</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Two</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>React</span><span>API</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Three</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>PyTorch</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Four</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Docker</span><span>AWS</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Five</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Arduino</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Six</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Raspberry Pi</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Seven</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>PCB</span><span>IoT</span></div>
+            </div>
+          </article>
+          <article class="proj-tile">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Eight</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Embedded C</span></div>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
 
   </div>
 </div>
@@ -852,14 +1022,14 @@
 </div>
 
 <script>
-  /* Experience: vertical tabbed job list — click a company to show its panel. */
-  (function () {
-    var tabs = document.querySelectorAll('.joblist-tab');
-    var panels = document.querySelectorAll('.joblist-panel');
+  /* Tabbed sections: click a tab to reveal its matching panel (by data-index). */
+  function initTabs(tabSel, panelSel) {
+    var tabs = document.querySelectorAll(tabSel);
+    var panels = document.querySelectorAll(panelSel);
     if (!tabs.length) return;
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
-        var i = this.getAttribute('data-index');
+        var i = tab.getAttribute('data-index');
         tabs.forEach(function (t) {
           var on = t === tab;
           t.classList.toggle('active', on);
@@ -872,7 +1042,51 @@
         });
       });
     });
+  }
+  initTabs('.joblist-tab', '.joblist-panel');   /* Experience — vertical */
+  initTabs('.pubtab', '.pubtab-panel');          /* Publications — horizontal */
+
+  /* About: cap the News list so column 2 (About me + News) never grows
+     taller than column 1 (the photo); the list scrolls within that space. */
+  (function () {
+    var pic = document.getElementById('about-pic');
+    var list = document.querySelector('.about-news-list');
+    if (!pic || !list) return;
+    function sync() {
+      if (window.innerWidth < 992) { list.style.maxHeight = 'none'; return; }
+      list.style.maxHeight = 'none';
+      var picBottom = pic.getBoundingClientRect().bottom;
+      var listTop = list.getBoundingClientRect().top;
+      var avail = picBottom - listTop;
+      list.style.maxHeight = Math.max(avail, 90) + 'px';
+    }
+    window.addEventListener('load', sync);
+    window.addEventListener('resize', sync);
+    sync();
+
+    /* "Read more" — show 3 latest, reveal the rest on demand. */
+    var list = document.querySelector('.about-news-list');
+    var btn = document.querySelector('.about-news-toggle');
+    if (list && btn) {
+      btn.addEventListener('click', function () {
+        var open = list.classList.toggle('expanded');
+        btn.textContent = open ? 'Read less' : 'Read more';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
   })();
+
+  /* Projects: left/right arrows scroll each tile carousel horizontally. */
+  document.querySelectorAll('.proj-sub').forEach(function (sub) {
+    var track = sub.querySelector('.proj-track');
+    if (!track) return;
+    sub.querySelectorAll('.proj-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = parseInt(btn.getAttribute('data-dir'), 10) || 1;
+        track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+  });
 </script>
 
 </body>
