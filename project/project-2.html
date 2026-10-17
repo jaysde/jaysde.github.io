@@ -13,7 +13,7 @@
 
   <header class="site-bar">
     <div class="wrap">
-      <a class="back-link" href="/#projects">&#8249; Back to home</a>
+      <a class="back-link" href="/#projects" onclick="return goBack(event)">&#8249; Back to home</a>
     </div>
   </header>
 
@@ -48,5 +48,17 @@
     <p>Built and designed by Jay Suthar.<br>All rights reserved. &copy;</p>
   </footer>
 
+
+  <script>
+    /* Return to the previous page (the home page, at its prior scroll
+       position) without a full reload; fall back to the Projects section
+       if this page was opened directly. */
+    function goBack(e) {
+      e.preventDefault();
+      if (document.referrer && history.length > 1) { history.back(); }
+      else { window.location.href = "/#projects"; }
+      return false;
+    }
+  </script>
 </body>
 </html>
