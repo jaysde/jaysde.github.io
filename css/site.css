@@ -6,12 +6,15 @@ body {
   margin: 0;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #e6e8ef;
+  background: #1d1e27;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
     radial-gradient(1100px 560px at 82% -8%, rgba(255, 255, 255, 0.035), transparent 60%),
     linear-gradient(165deg, #1d1e27 0%, #23242f 55%, #1b1c24 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
 }
 a { color: #cbd0dc; text-decoration: none; transition: color .2s ease; }
 a:hover { color: #ffffff; }
