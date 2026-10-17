@@ -375,14 +375,17 @@
     }
     .proj-arrow:hover { color: #ffffff; background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.35); }
     .proj-track {
-      display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth;
+      display: grid; grid-auto-flow: column;
+      grid-template-rows: repeat(2, auto); grid-auto-columns: 280px;
+      gap: 16px; overflow-x: auto; scroll-behavior: smooth;
       scroll-snap-type: x proximity; padding: 12px 2px 14px; margin-top: -10px;
       scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent;
     }
     .proj-track::-webkit-scrollbar { height: 6px; }
     .proj-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 6px; }
     .proj-tile {
-      flex: 0 0 280px; scroll-snap-align: start;
+      scroll-snap-align: start;
+      text-decoration: none !important; color: inherit !important;
       display: flex; flex-direction: column; overflow: hidden;
       background: linear-gradient(145deg, #2c2f3d, #24262f);
       border: 1px solid #3a3e52; border-radius: 14px;
@@ -408,7 +411,7 @@
       padding: 3px 9px; border-radius: 20px;
       background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10);
     }
-    @media (max-width: 575px) { .proj-tile { flex-basis: 78%; } }
+    @media (max-width: 575px) { .proj-track { grid-auto-columns: 78%; } }
 
     /* Footer: muted text with a gently beating heart */
     .site-footer .powered-by { color: #9aa0b8; font-size: 14px; }
@@ -767,70 +770,110 @@
           </div>
         </div>
         <div class="proj-track">
-          <article class="proj-tile">
+          <a class="proj-tile" href="/project/project-1.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project One</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>Python</span><span>ML</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-2.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Two</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>React</span><span>API</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-3.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Three</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>PyTorch</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-4.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Four</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>Docker</span><span>AWS</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-5.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Five</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>Arduino</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-6.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Six</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>Raspberry Pi</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-7.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Seven</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>PCB</span><span>IoT</span></div>
             </div>
-          </article>
-          <article class="proj-tile">
+          </a>
+          <a class="proj-tile" href="/project/project-8.html" target="_blank" rel="noopener">
             <div class="proj-thumb"></div>
             <div class="proj-tile-body">
               <h4 class="proj-tile-title">Project Eight</h4>
               <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
               <div class="proj-tags"><span>Embedded C</span></div>
             </div>
-          </article>
+          </a>
+          <a class="proj-tile" href="/project/project-9.html" target="_blank" rel="noopener">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Nine</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>TypeScript</span><span>Next.js</span></div>
+            </div>
+          </a>
+          <a class="proj-tile" href="/project/project-10.html" target="_blank" rel="noopener">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Ten</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>LangChain</span><span>RAG</span></div>
+            </div>
+          </a>
+          <a class="proj-tile" href="/project/project-11.html" target="_blank" rel="noopener">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Eleven</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Kubernetes</span></div>
+            </div>
+          </a>
+          <a class="proj-tile" href="/project/project-12.html" target="_blank" rel="noopener">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Twelve</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>Spark</span><span>ETL</span></div>
+            </div>
+          </a>
+          <a class="proj-tile" href="/project/project-13.html" target="_blank" rel="noopener">
+            <div class="proj-thumb"></div>
+            <div class="proj-tile-body">
+              <h4 class="proj-tile-title">Project Thirteen</h4>
+              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
+              <div class="proj-tags"><span>C++</span><span>CUDA</span></div>
+            </div>
+          </a>
         </div>
       </div>
 
