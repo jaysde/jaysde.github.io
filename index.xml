@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jay Suthar</title>
-    <link>https://jayysuthar.github.io/</link>
-      <atom:link href="https://jayysuthar.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jaysde.github.io/</link>
+      <atom:link href="https://jaysde.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Jay Suthar</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>https://jayysuthar.github.io/images/ME.jpg</url>
+      <url>https://jaysde.github.io/images/ME.jpg</url>
       <title>Jay Suthar</title>
-      <link>https://jayysuthar.github.io/</link>
+      <link>https://jaysde.github.io/</link>
     </image>
 
   </channel>
