@@ -187,9 +187,9 @@
     ctx.beginPath();
     ctx.moveTo(-bw / 2, 0); ctx.lineTo(-bw / 2 - legf * 9, legf * 12);
     ctx.moveTo(bw / 2, 0); ctx.lineTo(bw / 2 + legf * 9, legf * 12); ctx.stroke();
-    if (scene.boosterBox) {                        // payload riding inside the fairing
+    if (scene.boosterBox) {                        // payload inside the fairing (upper body)
       ctx.fillStyle = 'rgba(255,255,255,0.30)';
-      ctx.fillRect(-HB, -bh - HB * 2, HB * 2, HB * 2);
+      ctx.fillRect(-HB, -bh + 10 - HB, HB * 2, HB * 2);
     }
     if (flame) {
       var fl = 10 + (Math.sin(tick * 0.5) + 1) * 4;
@@ -250,10 +250,10 @@
     } else if (p < 0.80) {                            // rover carries box back to the rocket
       var t6 = sm((p - 0.56) / 0.24);
       s.roverX = lerp(pickupX, homeX, t6); s.roverFace = -1; s.boxX = s.roverX;
-    } else if (p < 0.86) {                            // load box onto the booster
+    } else if (p < 0.86) {                            // load box into the booster (upper body)
       s.roverX = homeX;
       var t7 = sm((p - 0.80) / 0.06);
-      s.boxX = lerp(homeX, padX, t7); s.boxY = lerp(boxOnRover, padY - 52, t7);
+      s.boxX = lerp(homeX, padX, t7); s.boxY = lerp(boxOnRover, padY - 34, t7);
     } else if (p < 0.95) {                            // launch, carrying the payload up
       s.roverX = homeX; s.boxVisible = false;
       s.boosterD = 1 - sm((p - 0.86) / 0.09); s.boosterFlame = true; s.boosterBox = true;
