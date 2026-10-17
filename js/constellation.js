@@ -20,6 +20,8 @@
   function lerp(a, b, t) { return a + (b - a) * t; }
   var scene = {};         // per-frame choreography state (filled by computeScene)
   var HB = 3.5;           // payload box half-size
+  var phaseBase = 0;      // lets a click fast-forward the cycle to launch
+  function phase() { return ((((tick - phaseBase) % SEQ) + SEQ) % SEQ) / SEQ; }
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -148,7 +150,7 @@
 
   /* GPU die with a grid of cores that flicker like active compute (right side). */
   function drawGPU(k) {
-    var gw = 86, gh = 86, gx = 26, gy = Math.round(NAV + (h - NAV) * 0.375 - gh / 2);
+    var gw = 66, gh = 66, gx = 26, gy = Math.round(NAV + (h - NAV) * 0.22 - gh / 2);
     ctx.strokeStyle = 'rgba(255,255,255,0.20)'; ctx.lineWidth = 1.5;
     ctx.strokeRect(gx, gy, gw, gh);
     ctx.strokeStyle = 'rgba(255,255,255,0.14)'; ctx.lineWidth = 1;
@@ -201,7 +203,7 @@
 
   /* Choreography: box rover -> arm -> rover -> rocket -> launch, on one loop. */
   function computeScene() {
-    var p = (tick % SEQ) / SEQ;
+    var p = phase();
     var roverRy = h - 22, homeX = 128, pickupX = w - 176;
     var armBaseX = w - 56, armBaseY = h - 40;
     var boxOnRover = roverRy - 12 - HB;             // resting on the rover deck
@@ -332,5 +334,15 @@
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) { running = false; cancelAnimationFrame(raf); }
     else if (!running) { running = true; raf = requestAnimationFrame(frame); }
+  });
+
+  /* Click the landed rocket to launch it immediately (jump the cycle to load/launch). */
+  window.addEventListener('click', function (e) {
+    if (phase() >= 0.80) return;                 // already loading / launching / returning
+    var padX = 84, padY = h - 34;
+    if (e.clientX >= padX - 24 && e.clientX <= padX + 24 &&
+        e.clientY >= padY - 72 && e.clientY <= padY + 12) {
+      phaseBase = tick - Math.round(0.80 * SEQ); // fast-forward to the launch sequence
+    }
   });
 })();
