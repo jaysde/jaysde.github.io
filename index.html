@@ -1,1157 +1,389 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.8.0">
-
-  <script>document.documentElement.className += ' js';</script>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-  <meta name="author" content="Jay Suthar">
-
-  
-  <meta name="description" content="Software Engineer">
-
-
-  <link rel="alternate" hreflang="en-us" href="https://jaysde.github.io/">
-
-  
-
-
-  
-  
-  
-  <meta name="theme-color" content="#1d1e27">
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
-
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
-  
-  
-  <link rel="stylesheet" href="/css/academic.css">
-
-
-
-
-  
-
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Jay Suthar">
-  
-
-  <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/favicon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon-192.png">
-
-  <link rel="canonical" href="https://jaysde.github.io/">
-
-  
-  
-  
-  
-  
-  
-  
-    
-    
-  
-  
-  <meta property="twitter:card" content="summary">
-  
-  <meta property="og:site_name" content="Jay Suthar">
-  <meta property="og:url" content="https://jaysde.github.io/">
-  <meta property="og:title" content="Jay Suthar">
-  <meta property="og:description" content="Software Engineer"><meta property="og:image" content="https://jaysde.github.io/images/me.png">
-  <meta property="twitter:image" content="https://jaysde.github.io/images/me.png"><meta property="og:locale" content="en-us">
-  
-    <meta property="og:updated_time" content="2020-08-01T00:00:00&#43;00:00">
-  
-
-  
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://jaysde.github.io/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  },
-  "url": "https://jaysde.github.io/"
-}
-</script>
-
-
-
-  <title>Jay</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jay Suthar</title>
+  <meta name="description" content="Jay Suthar — Machine Learning Engineer. Research interests in foundation models, representation learning, reasoning, and multimodal learning.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231f3a68'/><text x='50' y='66' font-size='48' font-family='Georgia,serif' text-anchor='middle' fill='white'>JS</text></svg>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    // Apply the saved theme before paint to avoid a flash
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <style>
-    /* Keep nav items on one line; the active/bold state must not wrap or break words.
-       flex:0 0 auto stops items shrinking below their content width when a link goes bold. */
-    #navbar-main .navbar-nav .nav-item { flex: 0 0 auto !important; }
-    #navbar-main .navbar-nav .nav-link,
-    #navbar-main .navbar-nav .nav-link span,
-    .navbar-nav .nav-link,
-    .navbar-nav .nav-link span {
-      white-space: nowrap !important;
-      word-break: keep-all !important;
-      overflow-wrap: normal !important;
-      word-wrap: normal !important;
-      hyphens: none !important;
+    :root {
+      --accent: #1f3a68;
+      --accent-text: #1f3a68;
+      --link: #1772d0;
+      --text: #111;
+      --heading: #111;
+      --muted: #555;
+      --muted-2: #666;
+      --muted-3: #999;
+      --border: #e0e0e0;
+      --panel: #fbfbfb;
+      --bg: #fff;
     }
-    /* Prevent the "google-scholar" link from breaking at its hyphen */
-    .alert-note a { white-space: nowrap; }
-    /* Experience, Projects & Publications run full width (heading on top, content below). */
-    #experience .row > [class*="col-"],
-    #projects .row > [class*="col-"] { flex: 0 0 100% !important; max-width: 100% !important; }
-    /* Submerge the navbar: a translucent glass bar that blends into the page
-       (frosted blur over the gradient) with just a hairline bottom border. */
-    /* Solid navbar background so scrolled content never shows through it;
-       matches the top of the page gradient so it blends at the top. */
-    .dark .navbar {
-      background: #1d1e27 !important;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    html.dark-mode {
+      --accent-text: #8fb4ff;
+      --link: #6eb5ff;
+      --text: #e0e0e0;
+      --heading: #fff;
+      --muted: #b5b5b5;
+      --muted-2: #a0a0a0;
+      --muted-3: #888;
+      --border: #3a3a3a;
+      --panel: #262626;
+      --bg: #1a1a1a;
     }
-    .dark .navbar-collapse { background-color: transparent !important; }
-    @media (max-width: 991px) {
-      .dark .navbar-collapse { background-color: #1d1e27 !important; }
-    }
-    /* Richer navbar typography: brighter text, bolder weight, a touch more size and tracking. */
-    #navbar-main .navbar-nav .nav-link,
-    #navbar-main .main-menu-item ul li .nav-link {
-      color: #eceff4 !important;
-      font-weight: 600 !important;
-      font-size: 14px !important;
-      letter-spacing: 0.03em !important;
-    }
-    #navbar-main .navbar-nav .nav-link:hover,
-    #navbar-main .navbar-nav .nav-link:focus { color: #ffffff !important; }
-    #navbar-main .navbar-nav .active > .nav-link,
-    #navbar-main .navbar-nav .nav-link.active { color: #ffffff !important; }
-    /* Larger social icons on the right so the bar feels fuller and richer. */
-    #navbar-main .nav-icons .nav-link { font-size: 1.35rem !important; padding: 5px 11px !important; }
-    #navbar-main .nav-icons .nav-link svg { width: 1.35rem !important; height: 1.35rem !important; }
-    #navbar-main .nav-icons .nav-link { transition: color .2s ease, transform .2s ease; }
-    #navbar-main .nav-icons .nav-link:hover { color: #ffffff !important; transform: translateY(-2px); }
 
-    /* ============================================================
-       Rich dark theme polish — understated neutral accents,
-       soft white-on-dark tints, no colored/neon glow
-       ============================================================ */
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6em;
+      color: var(--text);
+      background: var(--bg);
+      transition: background-color .4s, color .4s;
+    }
+    a { color: var(--link); text-decoration: none; transition: color .2s; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3 { color: var(--heading); font-weight: bold; }
+    h2 { font-size: 22px; margin: 44px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 20px; margin: 26px 0 10px; }
+    section { scroll-margin-top: 70px; }
 
-    /* Layered gradient backdrop on a fixed, composited layer (no
-       background-attachment:fixed, which repaints on every scroll frame). */
-    body.dark { background: #1d1e27 !important; color: #e6e8ef !important; }
-    body.dark::before {
-      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-      background:
-        radial-gradient(1100px 560px at 82% -8%, rgba(255, 255, 255, 0.035), transparent 60%),
-        linear-gradient(165deg, #1d1e27 0%, #23242f 55%, #1b1c24 100%);
-    }
-    /* Constellation network: drifting nodes linked by faint lines */
-    #bg-net { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: block; }
-
-    /* Reveal-on-scroll: only active when JS is present and motion is allowed,
-       so content is never hidden if JS is slow/off (no flash of empty page). */
-    @media (prefers-reduced-motion: no-preference) {
-      html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-      html.js .reveal.in { opacity: 1; transform: none; }
-    }
-    /* Let the backdrop show through; faint banding separates sections */
-    .dark .home-section { background: transparent !important; }
-    .dark .home-section:nth-of-type(even) { background: rgba(255, 255, 255, 0.018) !important; }
-
-    /* Section headings with a gradient accent underline */
-    .home-section h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 10px;
-      margin-bottom: 18px;
-    }
-    .home-section h1::after {
-      content: "";
-      position: absolute; left: 0; bottom: 0;
-      width: 54px; height: 3px; border-radius: 3px;
-      background: rgba(255, 255, 255, 0.28);
-    }
-    .home-section h3 { color: #c6cad8; }
-
-    /* Avatar: glowing accent ring that reacts on hover */
-    #profile .avatar {
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 14px 38px rgba(0, 0, 0, 0.45);
-      transition: transform .35s ease, box-shadow .35s ease;
-    }
-    #profile .avatar:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 18px 46px rgba(0, 0, 0, 0.55);
-    }
-    #profile .portrait-title h2 { font-weight: 700; letter-spacing: .3px; }
-    #profile .portrait-title h3 { color: #c6cad8 !important; font-weight: 500; }
-
-    /* About: News block inside column 2, capped to column 1's height (desktop). */
-    .about-news { margin-top: 18px; }
-    .about-news-title {
-      margin: 0 0 10px; font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: #c6cad8;
-    }
-    .about-news-list { list-style: none; padding: 0; margin: 0; }
-    .about-news-list li { position: relative; padding-left: 20px; margin-bottom: 8px; }
-    .about-news-list li::before {
-      content: ""; position: absolute; left: 0; top: 10px;
-      width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.35);
-    }
-    .about-news-list li p { margin: 0; color: #c6cad8; line-height: 1.5; font-size: 0.92rem; }
-    .about-news-extra { display: none; }
-    .about-news-list.expanded .about-news-extra { display: list-item; }
-    .about-news-toggle {
-      margin-top: 8px; padding: 2px 0; background: none; border: none;
-      color: #cbd0dc; font-weight: 600; font-size: 13px; cursor: pointer;
-      transition: color .2s ease; align-self: flex-start;
-    }
-    .about-news-toggle:hover { color: #ffffff; }
-    @media (min-width: 992px) {
-      #about-row { align-items: flex-start; }
-      .about-col { display: flex; flex-direction: column; }
-      /* The news list scrolls; its max-height is set by JS so column 2
-         never grows taller than column 1 (the photo). */
-      .about-news { display: flex; flex-direction: column; min-height: 0; }
-      .about-news-list { overflow-y: auto; padding-right: 8px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
-      .about-news-list::-webkit-scrollbar { width: 6px; }
-      .about-news-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 6px; }
-    }
-
-    /* Cards: elevated glass panels that lift and glow on hover */
-    .dark .card {
-      background: linear-gradient(145deg, #2c2f3d, #24262f) !important;
-      border: 1px solid #3a3e52 !important;
-      border-radius: 14px !important;
-      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38) !important;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .dark .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.22) !important;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45) !important;
-    }
-    .card-title.exp-title { color: #f3f4f8 !important; font-weight: 600; }
-    .card-title.exp-company a { color: #dfe3ec !important; }
-    .exp-meta { color: #9aa0b8 !important; }
-    .card-text { color: #c6cad8 !important; }
-
-    /* Timeline badges in accent gradient */
-    .home-section .badge-pill {
-      background: rgba(255, 255, 255, 0.28) !important;
-      border: none !important;
-    }
-    /* Projects: drop the timeline rail (dots + connector lines) so cards sit flush. */
-    #projects .row.experience > .col-auto { display: none !important; }
-
-    /* ---- Experience: vertical tabbed job list (inspired by gazijarin.com) ---- */
-    .joblist { display: flex; gap: 30px; margin-top: 6px; }
-    .joblist-tabs {
-      display: flex; flex-direction: column; flex: 0 0 auto; min-width: 150px;
-      border-left: 2px solid rgba(255, 255, 255, 0.12);
-    }
-    .joblist-tab {
-      background: none; border: none; border-left: 2px solid transparent; margin-left: -2px;
-      padding: 10px 20px; text-align: left; white-space: nowrap; cursor: pointer;
-      color: #9aa0b8; font-size: 14px; font-weight: 500; letter-spacing: 0.03em;
-      transition: color .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .joblist-tab:hover { color: #e6e8ef; background: rgba(255, 255, 255, 0.04); }
-    .joblist-tab:focus { outline: none; box-shadow: none; }
-    .joblist-tab:focus-visible { color: #ffffff; }
-    .joblist-tab.active {
-      color: #ffffff; background: rgba(255, 255, 255, 0.05); border-left-color: #ffffff;
-    }
-    .joblist-panels { flex: 1 1 auto; min-width: 0; }
-    .joblist-panel { animation: joblist-fade .35s ease; }
-    .joblist-panel[hidden] { display: none; }
-    .joblist-job-title { margin: 0 0 4px; font-size: 1.15rem; font-weight: 600; color: #f3f4f8; }
-    .joblist-company { color: #c6cad8; font-weight: 500; }
-    .joblist-company a { color: #ffffff !important; }
-    .joblist-duration {
-      margin: 0 0 10px; font-size: 0.85rem; color: #9aa0b8;
-      font-family: 'Roboto Mono', monospace; letter-spacing: 0.02em;
-    }
-    .joblist-project {
-      margin: 0 0 14px; font-size: 0.8rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase; color: #e6e8ef;
-    }
-    .job-description { list-style: none; padding: 0; margin: 0; }
-    .job-description li { position: relative; padding-left: 22px; margin-bottom: 10px; color: #c6cad8; line-height: 1.55; }
-    .job-description li::before { content: "\25B9"; position: absolute; left: 0; top: 0; color: #c6cad8; }
-    @keyframes joblist-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-    @media (max-width: 767px) {
-      .joblist { flex-direction: column; gap: 18px; }
-      .joblist-tabs {
-        flex-direction: row; min-width: 0; overflow-x: auto;
-        border-left: none; border-bottom: 2px solid rgba(255, 255, 255, 0.12);
-      }
-      .joblist-tab {
-        border-left: none; margin-left: 0;
-        border-bottom: 2px solid transparent; margin-bottom: -2px;
-      }
-      .joblist-tab.active { border-left-color: transparent; border-bottom-color: #ffffff; }
-    }
-    @media (prefers-reduced-motion: reduce) { .joblist-panel { animation: none; } }
-
-    /* Interests & education */
-    .ul-interests li, .ul-edu li { transition: color .2s ease, transform .2s ease; }
-    .ul-interests li:hover { color: #ffffff; transform: translateX(3px); }
-    .ul-edu .fa-li { color: #9aa0b8; }
-
-    /* Body links: soft light, brighter on hover */
-    .home-section a:not(.nav-link):not(.navbar-brand) { color: #cbd0dc; transition: color .2s ease; }
-    .home-section a:not(.nav-link):not(.navbar-brand):hover { color: #ffffff; }
-
-    /* Publications: horizontal tabs (Papers / Articles / Patents) */
-    .pubtabs-tabs {
-      display: flex; gap: 4px; overflow-x: auto;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.12);
-      margin: 6px 0 22px;
-    }
-    .pubtab {
-      background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px;
-      padding: 10px 20px; white-space: nowrap; cursor: pointer;
-      color: #9aa0b8; font-size: 14px; font-weight: 600; letter-spacing: 0.05em;
-      transition: color .2s ease, border-color .2s ease;
-    }
-    .pubtab:hover { color: #e6e8ef; }
-    .pubtab:focus { outline: none; box-shadow: none; }
-    .pubtab:focus-visible { color: #ffffff; }
-    .pubtab.active { color: #ffffff; border-bottom-color: #ffffff; }
-    .pubtab-panel { animation: joblist-fade .35s ease; }
-    .pubtab-panel[hidden] { display: none; }
-    .pub-list { display: flex; flex-direction: column; gap: 14px; }
-    .pub-card { text-decoration: none !important; color: inherit !important; display: block; }
-    .pub-item { display: flex; gap: 18px; align-items: center; padding: 16px 18px !important; }
-    .pub-thumb {
-      flex: 0 0 auto; width: 92px; height: 92px; object-fit: cover;
-      border-radius: 10px; border: 1px solid #3a3e52;
-      transition: transform .25s ease;
-    }
-    .pub-card:hover .pub-thumb { transform: scale(1.04); }
-    .pub-info { min-width: 0; }
-    .pub-title { margin: 0 0 6px; font-size: 1.05rem; font-weight: 600; color: #f3f4f8; line-height: 1.3; }
-    .pub-authors { margin: 0 0 3px; color: #c6cad8; font-size: 0.95rem; }
-    .pub-authors b { color: #ffffff; font-weight: 600; }
-    .pub-venue { margin: 0; color: #9aa0b8; font-size: 0.9rem; }
-    @media (max-width: 575px) {
-      .pub-item { flex-direction: column; align-items: flex-start; }
-      .pub-thumb { width: 100%; height: 170px; }
-    }
-    #pubs .alert-note {
-      background: rgba(255, 255, 255, 0.05) !important;
-      border: 1px solid rgba(255, 255, 255, 0.10) !important;
-      border-left: 3px solid rgba(255, 255, 255, 0.28) !important;
-      border-radius: 8px;
-      color: #c6cad8 !important;
-    }
-    #pubs .alert-note a { color: #ffffff !important; text-decoration: underline !important; }
-
-    /* ---- Projects: horizontally scrollable tile carousels with arrow controls ---- */
-    .proj-sub { margin-bottom: 34px; }
-    .proj-sub:last-child { margin-bottom: 0; }
-    .proj-sub-head { display: flex; align-items: center; justify-content: flex-end; margin-bottom: 14px; }
-    .proj-sub-title {
-      margin: 0; font-size: 0.95rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: #c6cad8;
-    }
-    .proj-nav { display: flex; gap: 8px; }
-    .proj-arrow {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #c6cad8; font-size: 20px; line-height: 1; cursor: pointer;
+    /* ---------- Top navigation ---------- */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--accent);
+      box-shadow: 0 2px 6px rgba(0,0,0,.18);
+      height: 54px;
       display: flex; align-items: center; justify-content: center;
-      transition: color .2s ease, background .2s ease, border-color .2s ease;
     }
-    .proj-arrow:hover { color: #ffffff; background: rgba(255, 255, 255, 0.10); border-color: rgba(255, 255, 255, 0.35); }
-    .proj-track {
-      display: grid; grid-auto-flow: column;
-      grid-template-rows: repeat(2, auto); grid-auto-columns: calc((100% - 32px) / 3);
-      gap: 16px; overflow-x: auto; scroll-behavior: smooth;
-      scroll-snap-type: x proximity; padding: 12px 2px 14px; margin-top: -10px;
-      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent;
+    .nav-links { display: flex; gap: 60px; }
+    .nav-links a {
+      color: #fff; text-transform: uppercase; letter-spacing: .5px; font-size: 17px;
     }
-    .proj-track::-webkit-scrollbar { height: 6px; }
-    .proj-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 6px; }
-    .proj-tile {
-      scroll-snap-align: start;
-      text-decoration: none !important; color: inherit !important;
-      display: flex; flex-direction: column; overflow: hidden;
-      background: linear-gradient(145deg, #2c2f3d, #24262f);
-      border: 1px solid #3a3e52; border-radius: 14px;
-      box-shadow: 0 6px 22px rgba(0, 0, 0, 0.38);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    .nav-links a:hover { text-decoration: none; opacity: .8; }
+    .nav-btn {
+      background: none; border: 0; color: #fff; font-size: 20px; cursor: pointer;
+      position: absolute; top: 50%; transform: translateY(-50%); padding: 8px;
     }
-    .proj-tile:hover {
-      transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
-    }
-    .proj-thumb {
-      height: 130px; background:
-        radial-gradient(120px 80px at 30% 20%, rgba(255,255,255,0.08), transparent 70%),
-        linear-gradient(135deg, #343848, #2a2d3a);
-      border-bottom: 1px solid #3a3e52;
-    }
-    .proj-tile-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
-    .proj-tile-title { margin: 0; font-size: 1.05rem; font-weight: 600; color: #f3f4f8; }
-    .proj-tile-desc { margin: 0; font-size: 0.9rem; color: #c6cad8; line-height: 1.5; }
-    .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-    .proj-tags span {
-      font-size: 0.72rem; letter-spacing: 0.03em; color: #c6cad8;
-      padding: 3px 9px; border-radius: 20px;
-      background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10);
-    }
-    @media (max-width: 575px) { .proj-track { grid-auto-columns: 78%; } }
+    .theme-toggle { right: 20px; }
+    .menu-toggle { left: 16px; display: none; }
 
-    /* Footer: muted text with a gently beating heart */
-    .site-footer .powered-by { color: #9aa0b8; font-size: 14px; }
-    .site-footer .fa-heart { animation: beat 1.5s ease-in-out infinite; }
-    @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.22); } }
+    /* ---------- Layout ---------- */
+    .main-container { max-width: 950px; margin: 0 auto; padding: 40px 20px 80px; }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .site-footer .fa-heart { animation: none; }
-      #profile .avatar, .dark .card, .ul-interests li, #pubs img { transition: none; }
+    /* ---------- About ---------- */
+    .intro { display: flex; gap: 36px; align-items: flex-start; }
+    .intro-left { flex: 0 0 32%; padding-top: 30px; }
+    .intro-right { flex: 1; }
+    .photo {
+      width: 100%; max-width: 250px; aspect-ratio: 4 / 5; border-radius: 4px;
+      object-fit: cover; display: block;
+    }
+    .photo-fallback {
+      width: 100%; max-width: 250px; aspect-ratio: 4 / 5; border-radius: 4px;
+      background: var(--accent); color: #fff; display: none;
+      align-items: center; justify-content: center; font-size: 64px; letter-spacing: 2px;
+    }
+    .name { font-size: 26px; font-weight: bold; margin: 18px 0 4px; color: var(--heading); }
+    .tagline { color: var(--muted); font-size: 16px; margin-bottom: 14px; line-height: 1.4em; }
+    .profile-links { display: flex; flex-direction: column; gap: 8px; }
+    .profile-links a { color: var(--muted); display: flex; align-items: center; gap: 12px; font-size: 16px; }
+    .profile-links a:hover { color: var(--accent-text); text-decoration: none; }
+    .profile-links i { width: 24px; font-size: 22px; text-align: center; }
+    .intro-right p:first-child { margin-top: 0; }
+    .interests { color: var(--muted); }
+
+    /* ---------- News ---------- */
+    .news-box {
+      max-height: 220px; overflow-y: auto;
+      border: 1px solid var(--border); border-radius: 8px; background: var(--panel);
+      padding: 6px 18px;
+    }
+    .news-item { padding: 8px 0; border-bottom: 1px dashed var(--border); }
+    .news-item:last-child { border-bottom: 0; }
+    .news-date { font-weight: bold; color: var(--accent-text); margin-right: 6px; }
+
+    /* ---------- Entries (experience / education) ---------- */
+    .entry { margin-bottom: 22px; }
+    .entry-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .entry-org { font-weight: bold; }
+    .entry-date { color: var(--muted); white-space: nowrap; }
+    .entry-sub { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-style: italic; color: var(--muted); }
+    .entry ul { margin: 6px 0 0; padding-left: 22px; }
+    .entry li { margin-bottom: 4px; }
+
+    /* ---------- Publications ---------- */
+    .pub { margin-bottom: 20px; }
+    .papertitle { font-size: 19px; color: var(--heading); font-weight: bold; }
+    .authors { color: var(--muted); }
+    .authors b { color: var(--text); }
+    .venue { font-style: italic; }
+    .badge { color: var(--accent-text); font-weight: 600; }
+
+    /* ---------- Skills ---------- */
+    .skills dt { font-weight: bold; }
+    .skills dd { margin: 0 0 10px 0; }
+
+    ul.plain { padding-left: 22px; }
+    ul.plain li { margin-bottom: 6px; }
+    .year { color: var(--muted-3); float: right; margin-left: 12px; }
+
+    footer { color: var(--muted-3); font-size: 15px; text-align: center; margin-top: 60px; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 950px) { .nav-links { gap: 32px; } }
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 56px; left: 16px;
+        flex-direction: column; gap: 0; width: 170px;
+        background: var(--accent); border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.25);
+        padding: 6px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 8px 16px; }
+      .intro { flex-direction: column; align-items: center; gap: 12px; }
+      .intro-left { padding-top: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+      .photo, .photo-fallback { max-width: 200px; }
+      .profile-links { flex-direction: row; gap: 18px; }
+      .profile-links span { display: none; }
+      .year { float: none; display: block; margin: 0; }
     }
   </style>
-
-  <script>
-    /* Force dark mode as the default. The theme reads localStorage['dark_mode']
-       (0=light, 1=dark, 2=auto) and falls back to Auto, which follows the OS.
-       Seed it to Dark so the site always loads dark. */
-    try { localStorage.setItem('dark_mode', '1'); } catch (e) {}
-  </script>
-
 </head>
+<body>
 
-<body id="top" class="dark" data-spy="scroll" data-offset="70" data-target="#navbar-main" >
-
-  <canvas id="bg-net" aria-hidden="true"></canvas>
-
-
-
-
-  
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
-  <div class="container">
-
-    
-
-    
-    <button type="button" class="navbar-toggler" data-toggle="collapse"
-            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span><i class="fas fa-bars"></i></span>
-    </button>
-    
-
-    
-
-    
-    
-    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
-
-      
-      <ul class="navbar-nav d-md-inline-flex">
-        
-        <li class="nav-item">
-          <a class="nav-link " href="/#about" data-target="#about"><span>About</span></a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#experience" data-target="#experience"><span>Experience</span></a>
-        </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#pubs" data-target="#pubs"><span>Publications</span></a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects" data-target="#projects"><span>Projects</span></a>
-        </li>
-
-      </ul>
-    </div>
-
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      <li class="nav-item">
-        <a class="nav-link" href="mailto:jaysutharsde@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://www.linkedin.com/in/jaysde" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://x.com/jaysde36" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:1.1rem;height:1.1rem;vertical-align:middle;fill:currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/jaysde" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
-      </li>
-    </ul>
-
+<nav class="navbar">
+  <button class="nav-btn menu-toggle" aria-label="Open menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#experience">Experience</a>
+    <a href="#papers">Papers</a>
+    <a href="#awards">Awards</a>
+    <a href="JaySuthar_CV.pdf" target="_blank" rel="noopener">CV</a>
   </div>
+  <button class="nav-btn theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()"><i id="themeIcon" class="fa-solid fa-moon"></i></button>
 </nav>
 
-<span class="js-widget-page d-none"></span>
+<div class="main-container">
 
-
-  <section id="about" class="home-section wg-about   " style="padding: 20px 0px 20px 0px;" >
-    <div class="container">
-     
-
-<div class="row" id="about-row">
-  <div class="col-12 col-lg-4" id="about-pic">
-    <div id="profile">
-
-      
-      
-      <img class="avatar avatar-circle" src="/images/me.png" alt="Jay Suthar" decoding="async" fetchpriority="high">
-      
-
-      <div class="portrait-title">
-        <h2>Jay Suthar</h2>
-        <h3>Software Engineer</h3>
-
-        
-        <h3>
-          
-          <span>United States</span>
-          
-        </h3>
-        
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="intro">
+    <div class="intro-left">
+      <!-- Put a photo named profile.png in the repo root; the initials show until then -->
+      <img class="photo" src="profile.png" alt="Jay Suthar"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="photo-fallback">JS</div>
+      <div class="name">Jay Suthar</div>
+      <div class="tagline">Machine Learning Engineer<br>Dallas, TX, USA</div>
+      <div class="profile-links">
+        <a href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i><span>Google Scholar</span></a>
+        <a href="https://www.linkedin.com/in/jaysde/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a>
+        <a href="https://github.com/jaysde" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+        <a href="mailto:jaysuthar0603@gmail.com"><i class="fa-solid fa-envelope"></i><span>Email</span></a>
+        <a href="JaySuthar_CV.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i><span>CV</span></a>
       </div>
-
-
     </div>
-  </div>
-  <div class="col-12 col-lg-8 about-col">
 
-    <h1>About me</h1>
+    <div class="intro-right">
+      <h1 style="font-size:26px;margin:0 0 14px;">About Me</h1>
+      <p>
+        I am a Machine Learning Engineer at <a href="https://www.statefarm.com/" target="_blank" rel="noopener">State Farm</a>,
+        where I build multi-task transformer models over claim text and structured data, and own the serving and MLOps stack behind them.
+        Before that, I was an AI Engineer at BlueMax, building retrieval-augmented generation systems on self-hosted LLMs,
+        and a Software Engineer at T-Mobile, working on large-scale recommendation models.
+      </p>
+      <p>
+        I received my M.S. in Information Technology &amp; Management from
+        <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">The University of Texas at Dallas</a>,
+        where I graduated as a <i>Scholar with Recognition</i> and was a <i>Dean's Excellence Scholar</i>.
+        I received my B.Tech. in Electronics &amp; Communication Engineering from
+        <a href="https://bvmengineering.ac.in/" target="_blank" rel="noopener">Birla Vishvakarma Mahavidyalaya (BVM)</a>,
+        where I was advised by Dr. Mehfuza S. Holia and worked on computer vision, deep learning, and machine learning for antenna design.
+        That work led to two journal papers and an <b>Indian patent (No. 503842)</b>.
+      </p>
+      <p class="interests">
+        <b>Research interests:</b> fundamental machine learning, foundation models, representation learning,
+        reasoning and planning, multimodal learning, generalization and transfer learning,
+        and general-purpose artificial intelligence.
+      </p>
+    </div>
+  </section>
 
-    <p>Software Engineer with 4 years of experience building LLM and retrieval systems that run in production.
-      I specialize in retrieval-augmented generation, inference optimization, and the MLOps infrastructure that keeps ML systems reliable at scale, including drift detection, model registries, and automated retraining.
-      My work spans the full lifecycle: training models on millions of users, deploying quantized models, and building streaming pipelines that catch model decay before it reaches users. </p>
+  <!-- ================= NEWS ================= -->
+  <section id="news">
+    <h2>News &amp; Updates</h2>
+    <div class="news-box">
+      <div class="news-item"><span class="news-date">[Jul 2025]</span> Joined <b>State Farm</b> as a Machine Learning Engineer.</div>
+      <div class="news-item"><span class="news-date">[May 2024]</span> Joined <b>BlueMax</b> as an AI Engineer, working on retrieval-augmented generation.</div>
+      <div class="news-item"><span class="news-date">[May 2024]</span> Graduated from UT Dallas as a <i>Scholar with Recognition</i> (bronze medal).</div>
+      <div class="news-item"><span class="news-date">[2024]</span> Received the <b>Undergraduate Star Researcher Award</b> from Gujarat Technological University.</div>
+      <div class="news-item"><span class="news-date">[Jan 2024]</span> Our patent on a touch-free virtual switch was granted (Indian Patent No. 503842).</div>
+      <div class="news-item"><span class="news-date">[Aug 2022]</span> Started the M.S. program at UT Dallas with the Dean's Excellence Scholarship.</div>
+      <div class="news-item"><span class="news-date">[2021]</span> Our paper on sign language recognition was published in GJCST-D.</div>
+    </div>
+  </section>
 
-    <div class="about-news">
-      <h3 class="about-news-title">News</h3>
-      <ul class="about-news-list">
-        <li><p><strong>[July 2025]</strong>: Joined <strong>Symplore</strong> as a Machine Learning Engineer!</p></li>
-        <li><p><strong>[May 2024]</strong>: Graduated with an MS from the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a>, earning the Bronze Medal &amp; Scholar with Recognition.</p></li>
-        <li><p><strong>[January 2024]</strong>: Joined <strong>BlueMax</strong> as an AI Engineer!</p></li>
-        <li class="about-news-extra"><p><strong>[January 2024]</strong>: My patent <em>Smart Device Operated and Controlled Electronic Virtual Switch</em> (No. 503842) was granted!</p></li>
-        <li class="about-news-extra"><p><strong>[August 2022]</strong>: Started my MS at the <a href="https://www.utdallas.edu/" target="_blank" rel="noopener">University of Texas at Dallas</a> on the Jindal School Graduate Study Scholarship.</p></li>
-        <li class="about-news-extra"><p><strong>[April 2021]</strong>: Ranked in the top 0.2% (62nd globally) in competitive programming on <a href="https://www.codechef.com/" target="_blank" rel="noopener">CodeChef</a>.</p></li>
-        <li class="about-news-extra"><p><strong>[January 2020]</strong>: Joined <a href="https://www.infosys.com/" target="_blank" rel="noopener">Infosys</a> as a Software Engineer.</p></li>
-        <li class="about-news-extra"><p><strong>[2020]</strong>: Received the <strong>Undergraduate Star Researcher Award</strong> from Gujarat Technological University.</p></li>
-        <li class="about-news-extra"><p><strong>[2018]</strong>: Won <strong>Ideathon'18</strong> and the <strong>14th Innovative Idea Competition (ISTE)</strong>.</p></li>
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <h3>Industry Experience</h3>
+
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org">State Farm</span><span class="entry-date">Jul 2025 – Present</span></div>
+      <div class="entry-sub"><span>Machine Learning Engineer</span><span>TX, USA</span></div>
+      <ul>
+        <li>Built a multi-task transformer over claim text and 68 structured features to predict claim-handling category and severity in one model.</li>
+        <li>Owned the serving and MLOps stack, investigating latency–accuracy trade-offs to hold p95 inference latency under 150&nbsp;ms at 10K+ daily predictions.</li>
+        <li>Added PSI-based distribution-shift monitoring and automated retraining under delayed label feedback.</li>
       </ul>
-      <button type="button" class="about-news-toggle" aria-expanded="false">Read more</button>
     </div>
 
-  </div><!-- /.col-lg-8 (About me) -->
-</div><!-- /.row -->
-    </div><!-- /.container -->
-  </section><!-- /#about -->
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org">BlueMax</span><span class="entry-date">May 2024 – Jul 2025</span></div>
+      <div class="entry-sub"><span>AI Engineer</span><span>CA, USA</span></div>
+      <ul>
+        <li>Built the machine learning components of a self-hosted retrieval-augmented generation system (Llama-2-13B) over about 50,000 internal documents, served on premise.</li>
+        <li>Redesigned retrieval as dense search plus BM25 with cross-encoder reranking, raising Recall@5 from about 0.61 to 0.78 on a 500-query benchmark.</li>
+        <li>Built the generative-QA evaluation (Recall@K, ROUGE-L, and BERTScore with human validation) to measure retrieval quality and answer faithfulness.</li>
+      </ul>
+    </div>
 
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org">T-Mobile</span><span class="entry-date">Jun 2020 – Jul 2022</span></div>
+      <div class="entry-sub"><span>Software Engineer</span><span>Mysore, India</span></div>
+      <ul>
+        <li>Co-developed an XGBoost plan-recommendation model for 5M+ postpaid subscribers, scoring newly introduced plans from behavior and attributes without retraining.</li>
+        <li>Owned the feature-engineering pipeline; a six-week A/B test raised conversion by about 18% over the rule-based system.</li>
+        <li>Added drift monitoring (PSI and Kolmogorov–Smirnov tests) to flag subscriber-behavior shifts and trigger retraining.</li>
+      </ul>
+    </div>
 
+    <h3>Research Experience</h3>
 
-  
-  
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org">BVM Engineering College</span><span class="entry-date">Jan 2018 – May 2020</span></div>
+      <div class="entry-sub"><span>Undergraduate Researcher</span><span>Anand, India</span></div>
+      <ul>
+        <li><b>Machine learning for antenna design.</b> Advised by Dr. A. Vahora, reframed X-band microstrip patch antenna design as a learning problem: represented each layout as an image and trained a CNN surrogate to predict its full S<sub>11</sub> response (0.60&nbsp;dB mean error), which stayed accurate on shapes outside the parametric design family where a parametric model did not (0.98 vs 3.52&nbsp;dB). Surrogate-assisted Bayesian optimization then met the target specification in about 18 full-wave simulations, against roughly 40 for manual tuning.</li>
+        <li><b>Touch-free virtual switch.</b> With Dr. Mehfuza S. Holia and Dr. Milendrakumar M. Solanki, co-designed a wall switch that works three ways: a finger gesture into an LED- and laser-marked zone (microwave presence sensing plus ultrasonic distance sensing), a nearby phone over infrared, or a phone anywhere over Wi-Fi, all driving one microcontroller and relay. Led to a journal paper and <b>Indian Patent No. 503842</b> (granted 2024); funded with INR 50,000 by the Government of Gujarat (SSIP).</li>
+        <li><b>Sign language recognition from video.</b> Led a camera-only system for Indian Sign Language (first-author paper). Built a skin-segmentation and CNN pipeline for 36 static signs (73.6% accuracy) with a 25-frame majority vote to keep the output stable; recorded a 12-word video dataset and switched the input to frame differences, so skin-colored backgrounds dropped out, with a MobileNetV2 + LSTM model reaching about 85%.</li>
+      </ul>
+    </div>
 
-  
-  
+    <h3>Education</h3>
 
-  <section id="experience" class="home-section wg-experience   " style="padding: 20px 0 20px 0;" >
-    <div class="container">
-      
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org"><a href="https://www.utdallas.edu/" target="_blank" rel="noopener">The University of Texas at Dallas</a>, USA</span><span class="entry-date">Aug 2022 – May 2024</span></div>
+      <div class="entry-sub"><span>M.S., Information Technology &amp; Management</span><span>GPA: 3.69 / 4.0</span></div>
+      <ul>
+        <li>Awarded as <i>Scholar with Recognition</i>; <i>Dean's Excellence Scholar</i> (Fall 22 and Spring 23)</li>
+      </ul>
+    </div>
 
-
-
-<div class="row">
-  <div class="col-12 section-heading reveal">
-    <h1>Experience</h1>
-
-  </div>
-  <div class="col-12">
-
-
-
-      <div class="joblist reveal">
-        <div class="joblist-tabs" role="tablist" aria-label="Work experience">
-          <button class="joblist-tab active" role="tab" aria-selected="true" data-index="0">Symplore</button>
-          <button class="joblist-tab" role="tab" aria-selected="false" data-index="1">BlueMax</button>
-          <button class="joblist-tab" role="tab" aria-selected="false" data-index="2">Infosys</button>
-        </div>
-
-        <div class="joblist-panels">
-
-          <div class="joblist-panel active" role="tabpanel" data-index="0">
-            <h4 class="joblist-job-title">Machine Learning Engineer</h4>
-            <p class="joblist-duration">July 2025 – July 2026</p>
-            <p class="joblist-project">Claims Triage ML Platform</p>
-            <ul class="job-description">
-              <li>Built and owned the serving + MLOps platform for a multi-task transformer that routes insurance claims and estimates cost from claim text plus 68 structured fields.</li>
-              <li>Migrated serving to a dedicated EKS nodegroup with gRPC + INT8 quantization, cutting p95 latency ~340ms → ~118ms against a 150ms SLO.</li>
-              <li>Added automated drift monitoring and a gated promotion pipeline, shrinking detection-to-fix time from ~6 weeks to ~9 days and lifting straight-through claim processing from 31% to 44%.</li>
-            </ul>
-          </div>
-
-          <div class="joblist-panel" role="tabpanel" data-index="1" hidden>
-            <h4 class="joblist-job-title">AI Engineer</h4>
-            <p class="joblist-duration">January 2024 – July 2025</p>
-            <p class="joblist-project">Enterprise RAG Knowledge Assistant</p>
-            <ul class="job-description">
-              <li>Built a self-hosted RAG system over a 50K+ document knowledge base, keeping HR/IT data inside a private VPC.</li>
-              <li>Rebuilt retrieval with hybrid dense + BM25 search and reranking, raising Recall@5 from ~0.61 to ~0.78 and cutting hallucinations from ~12% to ~3%.</li>
-              <li>Cut p95 time-to-first-token ~60% via quantization, a GPU migration, and caching, while roughly halving infra cost.</li>
-            </ul>
-          </div>
-
-          <div class="joblist-panel" role="tabpanel" data-index="2" hidden>
-            <h4 class="joblist-job-title">Software Engineer (ML)</h4>
-            <p class="joblist-duration">January 2020 – July 2022</p>
-            <p class="joblist-project">Telecom Plan Recommendation Engine</p>
-            <ul class="job-description">
-              <li>Built an XGBoost model predicting 14-day upgrade probability for 5M+ users, lifting conversion 18% over the legacy rules system.</li>
-              <li>Owned nightly Airflow ETL pipelines turning raw billing/CDR data into ~50 features per user, with automated quality checks.</li>
-              <li>Deployed as a containerized FastAPI service with drift monitoring, cutting p95 latency 25% over the prior monolith.</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
-  </div>
-</div>
-
+    <div class="entry">
+      <div class="entry-head"><span class="entry-org"><a href="https://bvmengineering.ac.in/" target="_blank" rel="noopener">Birla Vishvakarma Mahavidyalaya (BVM)</a>, India</span><span class="entry-date">Aug 2016 – May 2020</span></div>
+      <div class="entry-sub"><span>B.Tech., Electronics &amp; Communication Engineering (Gujarat Technological University)</span></div>
+      <ul>
+        <li>Advisor: Dr. Mehfuza S. Holia</li>
+        <li>Research area: Computer Vision and Deep Learning; Sensing and Interaction</li>
+        <li>Thesis: <i>Design of an X-Band Microstrip Patch Antenna Using Machine Learning and Bayesian Optimization</i></li>
+      </ul>
     </div>
   </section>
 
-<section id="pubs" class="home-section wg-blank" style="padding: 20px 0 20px 0;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 section-heading reveal">
-        <h1>Publications</h1>
-      </div>
-      <div class="col-12">
+  <!-- ================= PUBLICATIONS ================= -->
+  <section id="papers">
+    <h2>Publications &amp; Patent</h2>
+    <p class="authors">See also my <a href="https://scholar.google.com/citations?user=Jdb_yR4AAAAJ" target="_blank" rel="noopener">Google Scholar</a> profile.</p>
 
-        <div class="pubtabs reveal">
-          <div class="pubtabs-tabs" role="tablist" aria-label="Publications">
-            <button class="pubtab active" role="tab" aria-selected="true" data-index="0">Papers</button>
-            <button class="pubtab" role="tab" aria-selected="false" data-index="1">Patents</button>
-            <button class="pubtab" role="tab" aria-selected="false" data-index="2">Articles</button>
-          </div>
-
-          <div class="pubtab-panel active" role="tabpanel" data-index="0">
-            <div class="pub-list">
-
-              <a class="card pub-card" href="/publication/sign-language-recognition.html">
-                <div class="card-body pub-item">
-                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/sign-language.png" alt="Sign Language Recognition">
-                  <div class="pub-info">
-                    <h4 class="pub-title">Sign Language Recognition for Static and Dynamic Gestures</h4>
-                    <p class="pub-authors"><b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, Avi Patel</p>
-                    <p class="pub-venue"><i>Global Journal of Computer Science and Technology (GJCST)</i> &middot; 2021</p>
-                  </div>
-                </div>
-              </a>
-
-              <a class="card pub-card" href="/publication/portable-attendance-system.html">
-                <div class="card-body pub-item">
-                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/attendance.png" alt="Portable Attendance System">
-                  <div class="pub-info">
-                    <h4 class="pub-title">Portable Attendance System</h4>
-                    <p class="pub-authors"><b>Jay Suthar</b>, Aarya Brahmane</p>
-                    <p class="pub-venue"><i>International Journal of Science and Research (IJSR)</i> &middot; 2019</p>
-                  </div>
-                </div>
-              </a>
-
-              <a class="card pub-card" href="/publication/virtual-switch.html">
-                <div class="card-body pub-item">
-                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/virtual-switch.png" alt="Virtual Switch">
-                  <div class="pub-info">
-                    <h4 class="pub-title">Virtual Switch</h4>
-                    <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Mehfuza Holia</p>
-                    <p class="pub-venue"><i>Journal of Operating Systems Development &amp; Trends (JoOSDT)</i> &middot; 2018</p>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-          </div>
-
-          <div class="pubtab-panel" role="tabpanel" data-index="2" hidden>
-            <div class="pub-list">
-
-              <a class="card pub-card" href="/publication/x-band-antenna.html">
-                <div class="card-body pub-item">
-                  <img loading="lazy" decoding="async" class="pub-thumb" src="/files/x-band-antenna.png" alt="Microstrip Patch Antenna for X-Band">
-                  <div class="pub-info">
-                    <h4 class="pub-title">Design of Microstrip Patch Antenna for X-Band Applications</h4>
-                    <p class="pub-authors"><b>Jay Suthar</b>, Anish Vahora</p>
-                    <p class="pub-venue"><i>Birla Vishvakarma Mahavidyalaya (BVM) College of Engineering</i> &middot; 2020</p>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-          </div>
-
-          <div class="pubtab-panel" role="tabpanel" data-index="1" hidden>
-            <div class="pub-list">
-
-              <a class="card pub-card" href="/publication/smart-device-virtual-switch.html">
-                <div class="card-body pub-item">
-                  <div class="pub-info">
-                    <h4 class="pub-title">Smart Device Operated and Controlled Electronic Virtual Switch</h4>
-                    <p class="pub-authors">Ankur Varma, <b>Jay Suthar</b>, Dr. Mehfuza Holia, Dr. Milendrakumar Manilal Solanki</p>
-                    <p class="pub-venue">Patent No. 503842 &middot; Granted Jan 28, 2024</p>
-                  </div>
-                </div>
-              </a>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+    <h3>Journals</h3>
+    <div class="pub">
+      <div class="papertitle">Sign Language Recognition for Static and Dynamic Gestures</div>
+      <div class="authors"><b>Jay Suthar</b>, Devansh Parikh, Tanya Sharma, &amp; Avi Patel</div>
+      <div><span class="venue">Global Journal of Computer Science and Technology (GJCST-D)</span>, vol. 21, no. 2, 2021.</div>
     </div>
-  </div>
-</section>
+    <div class="pub">
+      <div class="papertitle">Virtual Switch</div>
+      <div class="authors">Ankur Varma, <b>Jay Suthar</b>, Mehfuza S. Holia, &amp; Milendrakumar M. Solanki</div>
+      <div><span class="venue">Journal of Operating Systems Development &amp; Trends (JoOSDT)</span>, vol. 5, no. 3, 2018.</div>
+    </div>
 
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-
-  <section id="projects" class="home-section wg-experience   " style="padding: 20px 0 20px 0;" >
-    <div class="container">
-
-
-
-<div class="row">
-  <div class="col-12 section-heading reveal">
-    <h1>Projects</h1>
-  </div>
-  <div class="col-12">
-
-      <div class="proj-sub reveal">
-        <div class="proj-sub-head">
-          <div class="proj-nav">
-            <button class="proj-arrow" type="button" data-dir="-1" aria-label="Scroll projects left">&#8249;</button>
-            <button class="proj-arrow" type="button" data-dir="1" aria-label="Scroll projects right">&#8250;</button>
-          </div>
-        </div>
-        <div class="proj-track">
-          <a class="proj-tile" href="/project/project-1.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project One</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Python</span><span>ML</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-2.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Two</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>React</span><span>API</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-3.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Three</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>PyTorch</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-4.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Four</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Docker</span><span>AWS</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-5.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Five</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Arduino</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-6.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Six</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Raspberry Pi</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-7.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Seven</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>PCB</span><span>IoT</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-8.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Eight</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Embedded C</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-9.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Nine</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>TypeScript</span><span>Next.js</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-10.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Ten</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>LangChain</span><span>RAG</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-11.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Eleven</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Kubernetes</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-12.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Twelve</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>Spark</span><span>ETL</span></div>
-            </div>
-          </a>
-          <a class="proj-tile" href="/project/project-13.html">
-            <div class="proj-thumb"></div>
-            <div class="proj-tile-body">
-              <h4 class="proj-tile-title">Project Thirteen</h4>
-              <p class="proj-tile-desc">Short description of what this project does and the problem it solves.</p>
-              <div class="proj-tags"><span>C++</span><span>CUDA</span></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-  </div>
-</div>
-
+    <h3>Patent</h3>
+    <div class="pub">
+      <div class="papertitle">Smart Device Operated and Controlled Electronic Virtual Switch</div>
+      <div class="authors">Ankur Varma, <b>Jay Suthar</b>, Dr. Mehfuza Holia, Dr. Milendrakumar Manilal Solanki</div>
+      <div><span class="badge">Indian Patent No. 503842</span> &nbsp;|&nbsp; Granted Jan 28, 2024 &nbsp;|&nbsp; Filed Aug 23, 2019 (Application No. 201921033984)</div>
     </div>
   </section>
 
+  <!-- ================= AWARDS ================= -->
+  <section id="awards">
+    <h2>Awards &amp; Honors</h2>
+    <ul class="plain">
+      <li><b>Scholar with Recognition</b>, The University of Texas at Dallas — bronze medal on graduation for outstanding academic performance. <span class="year">2024</span></li>
+      <li><b>Undergraduate Star Researcher Award</b>, Gujarat Technological University — for the granted patent on the touch-free virtual switch. <span class="year">2024</span></li>
+      <li><b>Dean's Excellence Scholarship</b>, The University of Texas at Dallas — competitive merit-based scholarship, Fall 2022 and Spring 2023. <span class="year">2022</span></li>
+      <li><b>Top 0.2% on CodeChef</b> — 62nd globally among 28,000+ competitive programmers. <span class="year">2021</span></li>
+      <li><b>Winner, 14th Innovative Idea Competition</b>, ISTE — first place in the annual national innovation competition. <span class="year">2018</span></li>
+      <li><b>Winner, Ideathon'18</b>, BVM Innovation &amp; Entrepreneurship Cell — INR 20,000 grant to develop the virtual switch. <span class="year">2018</span></li>
+    </ul>
+  </section>
 
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Programming</dt>
+      <dd>Python, C++, SQL, R</dd>
+      <dt>Deep Learning &amp; ML</dt>
+      <dd>PyTorch, TensorFlow, Hugging Face Transformers, scikit-learn, XGBoost, OpenCV</dd>
+      <dt>Models &amp; Methods</dt>
+      <dd>Transformers and multi-task learning; retrieval-augmented generation (dense + BM25 retrieval, cross-encoder reranking); CNNs and MobileNetV2 + LSTM models for images and video; gradient-boosted trees</dd>
+      <dt>Experimentation &amp; Evaluation</dt>
+      <dd>A/B test design and analysis; hypothesis testing (two-proportion <i>z</i>-tests, Kolmogorov–Smirnov tests); distribution-shift detection (PSI); benchmark construction with human validation (Recall@K, ROUGE-L, BERTScore)</dd>
+      <dt>Computing</dt>
+      <dd>Linux, Git, Docker, AWS (SageMaker), MLflow, ONNX Runtime</dd>
+    </dl>
+  </section>
 
-
-
-  
-
-  
-
-  
-
-  
-    
-    
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-
-
-  
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-
-      
-
-    
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-
-
-
-    
-
-    
-    
-
-    
-    
-    <script>const code_highlighting = false;</script>
-    
-
-    
-    
-    <script>const isSiteThemeDark = true;</script>
-    
-
-    
-    
-    
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    
-    
-    
-    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
-
-    
-
-
-
-
-
-
-  
-  
-  <div class="container">
-    <footer class="site-footer">
-  
-
-  <p class="powered-by" style="text-align:center; width:100%;">
-    Built and designed by Jay Suthar.<br>
-    All rights reserved. &copy;
-  </p>
-</footer>
-
-  </div>
-  
-
-  
-<div id="modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Cite</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <pre><code class="tex hljs"></code></pre>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
-          <i class="fas fa-copy"></i> Copy
-        </a>
-        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
-        <div id="modal-error"></div>
-      </div>
-    </div>
-  </div>
+  <footer>© <span id="year"></span> Jay Suthar</footer>
 </div>
 
 <script>
-  /* Tabbed sections: click a tab to reveal its matching panel (by data-index). */
-  function initTabs(tabSel, panelSel) {
-    var tabs = document.querySelectorAll(tabSel);
-    var panels = document.querySelectorAll(panelSel);
-    if (!tabs.length) return;
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var i = tab.getAttribute('data-index');
-        tabs.forEach(function (t) {
-          var on = t === tab;
-          t.classList.toggle('active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        panels.forEach(function (p) {
-          var match = p.getAttribute('data-index') === i;
-          p.classList.toggle('active', match);
-          if (match) { p.removeAttribute('hidden'); } else { p.setAttribute('hidden', ''); }
-        });
-      });
-    });
+  function setIcon() {
+    var dark = document.documentElement.classList.contains('dark-mode');
+    document.getElementById('themeIcon').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
   }
-  initTabs('.joblist-tab', '.joblist-panel');   /* Experience — vertical */
-  initTabs('.pubtab', '.pubtab-panel');          /* Publications — horizontal */
-
-  /* About: cap the News list so column 2 (About me + News) never grows
-     taller than column 1 (the photo); the list scrolls within that space. */
-  (function () {
-    var pic = document.getElementById('about-pic');
-    var list = document.querySelector('.about-news-list');
-    if (!pic || !list) return;
-    function sync() {
-      if (window.innerWidth < 992) { list.style.maxHeight = 'none'; return; }
-      list.style.maxHeight = 'none';
-      var picBottom = pic.getBoundingClientRect().bottom;
-      var listTop = list.getBoundingClientRect().top;
-      var avail = picBottom - listTop;
-      list.style.maxHeight = Math.max(avail, 90) + 'px';
-    }
-    window.addEventListener('load', sync);
-    window.addEventListener('resize', sync);
-    sync();
-
-    /* "Read more" — show 3 latest, reveal the rest on demand. */
-    var list = document.querySelector('.about-news-list');
-    var btn = document.querySelector('.about-news-toggle');
-    if (list && btn) {
-      btn.addEventListener('click', function () {
-        var open = list.classList.toggle('expanded');
-        btn.textContent = open ? 'Read less' : 'Read more';
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-  })();
-
-  /* Projects: left/right arrows scroll each tile carousel horizontally. */
-  document.querySelectorAll('.proj-sub').forEach(function (sub) {
-    var track = sub.querySelector('.proj-track');
-    if (!track) return;
-    sub.querySelectorAll('.proj-arrow').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var dir = parseInt(btn.getAttribute('data-dir'), 10) || 1;
-        track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
-      });
-    });
+  function toggleTheme() {
+    var dark = document.documentElement.classList.toggle('dark-mode');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    setIcon();
+  }
+  function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+  document.querySelectorAll('#navLinks a').forEach(function (a) {
+    a.addEventListener('click', function () { document.getElementById('navLinks').classList.remove('open'); });
   });
-
-  /* Reveal-on-scroll: fade/slide elements in as they enter the viewport. */
-  (function () {
-    var items = document.querySelectorAll('.reveal');
-    if (!items.length) return;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce || !('IntersectionObserver' in window)) {
-      items.forEach(function (el) { el.classList.add('in'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach(function (el) { io.observe(el); });
-  })();
+  document.getElementById('year').textContent = new Date().getFullYear();
+  setIcon();
 </script>
-
-  <script src="/js/constellation.js?v=5"></script>
-
 </body>
 </html>
-
