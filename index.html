@@ -197,6 +197,29 @@
       .skills { grid-template-columns: 1fr; gap: 2px; }
       .skills dd { margin-bottom: 10px; }
     }
+    /* ---------- Work diagrams ---------- */
+    .diagrams { margin-top: 14px; }
+    .diagrams-label { font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); margin-bottom: 8px; }
+    .diagram-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .diagram { margin: 0; cursor: zoom-in; border: 1px solid var(--border-strong); border-radius: 10px; overflow: hidden; background: var(--panel); transition: box-shadow .2s, transform .2s; }
+    .diagram:hover, .diagram:focus-visible { box-shadow: 0 4px 14px rgba(0,0,0,.12); transform: translateY(-2px); outline: none; }
+    .diagram img { display: block; width: 100%; height: auto; aspect-ratio: 1586 / 992; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border-strong); }
+    .diagram figcaption { padding: 10px 12px 12px; font-size: 14px; line-height: 1.45; }
+    .diagram figcaption b { display: block; margin-bottom: 3px; }
+    .diagram figcaption span { color: var(--muted); }
+
+    .lightbox { border: 0; padding: 0; max-width: min(1200px, 96vw); width: 96vw; background: var(--bg); color: var(--text); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+    .lightbox::backdrop { background: rgba(10,12,14,.75); }
+    .lb-img { display: block; width: 100%; height: auto; max-height: 74vh; object-fit: contain; background: #f4f6fb; }
+    .lb-body { display: flex; gap: 16px; align-items: flex-start; padding: 14px 18px 16px; }
+    .lb-text { flex: 1; font-size: 15px; }
+    .lb-text b { display: block; font-size: 17px; color: var(--heading); margin-bottom: 2px; }
+    .lb-text span { color: var(--muted); }
+    .lb-btns { display: flex; gap: 6px; }
+    .lb-btns button { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border-strong); background: var(--bg); color: var(--text); cursor: pointer; font-size: 15px; }
+    .lb-btns button:hover { color: var(--link); }
+    .lb-btns button:disabled { opacity: .35; cursor: default; }
+    @media (max-width: 600px) { .lb-body { flex-direction: column-reverse; } .lb-btns { align-self: flex-end; } }
   </style>
 </head>
 <body>
@@ -289,6 +312,19 @@
             <li>Owned the serving and MLOps stack, investigating latency–accuracy trade-offs to hold p95 inference latency under 150&nbsp;ms at 10K+ daily predictions.</li>
             <li>Added PSI-based distribution-shift monitoring and automated retraining under delayed label feedback.</li>
           </ul>
+          <div class="diagrams" aria-label="State Farm system diagrams">
+            <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
+            <div class="diagram-grid">
+            <figure class="diagram" tabindex="0" data-src="images/work/statefarm-claims-platform.webp" data-title="Claims triage ML platform" data-caption="Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.">
+              <img src="images/work/statefarm-claims-platform.webp" alt="Claims triage ML platform: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Claims triage ML platform</b><span>Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.</span></figcaption>
+            </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/statefarm-governed-release.webp" data-title="From drift detection to governed release" data-caption="Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.">
+              <img src="images/work/statefarm-governed-release.webp" alt="From drift detection to governed release: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>From drift detection to governed release</b><span>Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.</span></figcaption>
+            </figure>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -302,6 +338,19 @@
             <li>Redesigned retrieval as dense search plus BM25 with cross-encoder reranking, raising Recall@5 from about 0.61 to 0.78 on a 500-query benchmark.</li>
             <li>Built the generative-QA evaluation (Recall@K, ROUGE-L, and BERTScore with human validation) to measure retrieval quality and answer faithfulness.</li>
           </ul>
+          <div class="diagrams" aria-label="BlueMax system diagrams">
+            <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
+            <div class="diagram-grid">
+            <figure class="diagram" tabindex="0" data-src="images/work/bluemax-rag-architecture.webp" data-title="Enterprise RAG architecture" data-caption="Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.">
+              <img src="images/work/bluemax-rag-architecture.webp" alt="Enterprise RAG architecture: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Enterprise RAG architecture</b><span>Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.</span></figcaption>
+            </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/bluemax-ab-experiment.webp" data-title="A/B experiment and model feedback" data-caption="The current and improved RAG pipelines run side by side on live traffic. The results feed drift checks, retraining, offline evaluation, and a human-approved release.">
+              <img src="images/work/bluemax-ab-experiment.webp" alt="A/B experiment and model feedback: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>A/B experiment and model feedback</b><span>The current and improved RAG pipelines run side by side on live traffic. The results feed drift checks, retraining, offline evaluation, and a human-approved release.</span></figcaption>
+            </figure>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -315,6 +364,15 @@
             <li>Owned the feature-engineering pipeline; a six-week A/B test raised conversion by about 18% over the rule-based system.</li>
             <li>Added drift monitoring (PSI and Kolmogorov–Smirnov tests) to flag subscriber-behavior shifts and trigger retraining.</li>
           </ul>
+          <div class="diagrams" aria-label="T-Mobile system diagrams">
+            <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
+            <div class="diagram-grid">
+            <figure class="diagram" tabindex="0" data-src="images/work/tmobile-plan-scoring.webp" data-title="How the model scores eligible plans" data-caption="Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.">
+              <img src="images/work/tmobile-plan-scoring.webp" alt="How the model scores eligible plans: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>How the model scores eligible plans</b><span>Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.</span></figcaption>
+            </figure>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -448,6 +506,49 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
   setIcon();
+</script>
+<dialog class="lightbox" id="lightbox" aria-label="Diagram viewer">
+  <img class="lb-img" id="lbImg" alt="">
+  <div class="lb-body">
+    <div class="lb-text"><b id="lbTitle"></b><span id="lbCaption"></span></div>
+    <div class="lb-btns">
+      <button id="lbPrev" aria-label="Previous diagram"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="lbNext" aria-label="Next diagram"><i class="fa-solid fa-chevron-right"></i></button>
+      <a id="lbOpen" target="_blank" rel="noopener" aria-label="Open full size in new tab"><button tabindex="-1"><i class="fa-solid fa-up-right-from-square"></i></button></a>
+      <button id="lbClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+</dialog>
+<script>
+  (function () {
+    var dlg = document.getElementById('lightbox'), group = [], idx = 0;
+    function show(i) {
+      idx = i; var f = group[i];
+      document.getElementById('lbImg').src = f.dataset.src;
+      document.getElementById('lbImg').alt = f.dataset.title + ': system diagram';
+      document.getElementById('lbTitle').textContent = f.dataset.title;
+      document.getElementById('lbCaption').textContent = f.dataset.caption;
+      document.getElementById('lbOpen').href = f.dataset.src;
+      document.getElementById('lbPrev').disabled = i === 0;
+      document.getElementById('lbNext').disabled = i === group.length - 1;
+    }
+    document.querySelectorAll('.diagram').forEach(function (f) {
+      function open() {
+        group = Array.prototype.slice.call(f.closest('.diagram-grid').querySelectorAll('.diagram'));
+        show(group.indexOf(f)); dlg.showModal();
+      }
+      f.addEventListener('click', open);
+      f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    document.getElementById('lbPrev').onclick = function () { if (idx > 0) show(idx - 1); };
+    document.getElementById('lbNext').onclick = function () { if (idx < group.length - 1) show(idx + 1); };
+    document.getElementById('lbClose').onclick = function () { dlg.close(); };
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft' && idx > 0) show(idx - 1);
+      if (e.key === 'ArrowRight' && idx < group.length - 1) show(idx + 1);
+    });
+  })();
 </script>
 </body>
 </html>
