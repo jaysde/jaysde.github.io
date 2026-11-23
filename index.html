@@ -315,12 +315,12 @@
           <div class="diagrams" aria-label="State Farm system diagrams">
             <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
             <div class="diagram-grid">
-            <figure class="diagram" tabindex="0" data-src="images/work/statefarm-claims-platform.webp" data-title="Claims triage ML platform" data-caption="Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.">
-              <img src="images/work/statefarm-claims-platform.webp" alt="Claims triage ML platform: system diagram" loading="lazy" width="1586" height="992">
+            <figure class="diagram" tabindex="0" data-src="images/work/claims_ml_platform.webp" data-title="Claims triage ML platform" data-caption="Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.">
+              <img src="images/work/claims_ml_platform.webp" alt="Claims triage ML platform: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>Claims triage ML platform</b><span>Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.</span></figcaption>
             </figure>
-            <figure class="diagram" tabindex="0" data-src="images/work/statefarm-governed-release.webp" data-title="From drift detection to governed release" data-caption="Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.">
-              <img src="images/work/statefarm-governed-release.webp" alt="From drift detection to governed release: system diagram" loading="lazy" width="1586" height="992">
+            <figure class="diagram" tabindex="0" data-src="images/work/drift_monitoring_and_governed_rollout.webp" data-title="From drift detection to governed release" data-caption="Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.">
+              <img src="images/work/drift_monitoring_and_governed_rollout.webp" alt="From drift detection to governed release: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>From drift detection to governed release</b><span>Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.</span></figcaption>
             </figure>
             </div>
@@ -341,13 +341,9 @@
           <div class="diagrams" aria-label="BlueMax system diagrams">
             <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
             <div class="diagram-grid">
-            <figure class="diagram" tabindex="0" data-src="images/work/bluemax-rag-architecture.webp" data-title="Enterprise RAG architecture" data-caption="Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.">
-              <img src="images/work/bluemax-rag-architecture.webp" alt="Enterprise RAG architecture: system diagram" loading="lazy" width="1586" height="992">
+            <figure class="diagram" tabindex="0" data-src="images/work/enterprise_rag_architecture_infographic.webp" data-title="Enterprise RAG architecture" data-caption="Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.">
+              <img src="images/work/enterprise_rag_architecture_infographic.webp" alt="Enterprise RAG architecture: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>Enterprise RAG architecture</b><span>Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.</span></figcaption>
-            </figure>
-            <figure class="diagram" tabindex="0" data-src="images/work/bluemax-ab-experiment.webp" data-title="A/B experiment and model feedback" data-caption="The current and improved RAG pipelines run side by side on live traffic. The results feed drift checks, retraining, offline evaluation, and a human-approved release.">
-              <img src="images/work/bluemax-ab-experiment.webp" alt="A/B experiment and model feedback: system diagram" loading="lazy" width="1586" height="992">
-              <figcaption><b>A/B experiment and model feedback</b><span>The current and improved RAG pipelines run side by side on live traffic. The results feed drift checks, retraining, offline evaluation, and a human-approved release.</span></figcaption>
             </figure>
             </div>
           </div>
@@ -367,9 +363,13 @@
           <div class="diagrams" aria-label="T-Mobile system diagrams">
             <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
             <div class="diagram-grid">
-            <figure class="diagram" tabindex="0" data-src="images/work/tmobile-plan-scoring.webp" data-title="How the model scores eligible plans" data-caption="Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.">
-              <img src="images/work/tmobile-plan-scoring.webp" alt="How the model scores eligible plans: system diagram" loading="lazy" width="1586" height="992">
+            <figure class="diagram" tabindex="0" data-src="images/work/how_the_model_scores_eligible_plans.webp" data-title="How the model scores eligible plans" data-caption="Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.">
+              <img src="images/work/how_the_model_scores_eligible_plans.webp" alt="How the model scores eligible plans: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>How the model scores eligible plans</b><span>Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.</span></figcaption>
+            </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/a_b_experiment_and_model_feedback_flow.webp" data-title="A/B experiment and model feedback" data-caption="A control and a variant model run side by side on live traffic (A/B test). The results feed PSI/KS drift checks, retraining, offline evaluation, and a human-approved release.">
+              <img src="images/work/a_b_experiment_and_model_feedback_flow.webp" alt="A/B experiment and model feedback: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>A/B experiment and model feedback</b><span>A control and a variant model run side by side on live traffic (A/B test). The results feed PSI/KS drift checks, retraining, offline evaluation, and a human-approved release.</span></figcaption>
             </figure>
             </div>
           </div>
