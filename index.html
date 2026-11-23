@@ -319,6 +319,10 @@
               <img src="images/work/claims_ml_platform.webp" alt="Claims triage ML platform: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>Claims triage ML platform</b><span>Claim events reach a low-latency model (ONNX on Amazon EKS) that suggests routing and severity to adjusters. A separate learning plane captures feature snapshots, watches drift, and retrains under human approval.</span></figcaption>
             </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/multi_task_model_flowchart.webp" data-title="Multi-task model: text + tabular" data-caption="Claim text (DistilRoBERTa) and 68 structured fields (an MLP) are merged into one shared representation that predicts both the routing class and the expected severity in a single forward pass.">
+              <img src="images/work/multi_task_model_flowchart.webp" alt="Multi-task model: text + tabular: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Multi-task model: text + tabular</b><span>Claim text (DistilRoBERTa) and 68 structured fields (an MLP) are merged into one shared representation that predicts both the routing class and the expected severity in a single forward pass.</span></figcaption>
+            </figure>
             <figure class="diagram" tabindex="0" data-src="images/work/drift_monitoring_and_governed_rollout.webp" data-title="From drift detection to governed release" data-caption="Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.">
               <img src="images/work/drift_monitoring_and_governed_rollout.webp" alt="From drift detection to governed release: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>From drift detection to governed release</b><span>Sustained PSI drift can start retraining, but a new model must pass offline checks, shadow replay, 20% and 50% canaries, and a named human sign-off before full rollout.</span></figcaption>
@@ -345,6 +349,14 @@
               <img src="images/work/enterprise_rag_architecture_infographic.webp" alt="Enterprise RAG architecture: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>Enterprise RAG architecture</b><span>Documents are cleaned, chunked, and indexed both densely (embeddings) and sparsely (BM25). Each question goes through a cache, hybrid retrieval, and the LLM, and comes back as an answer with citations.</span></figcaption>
             </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/permission_aware_hybrid_retrieval_workflow.webp" data-title="Hybrid retrieval with permission boundaries" data-caption="Dense (Pinecone) and keyword (BM25) search run in parallel. Keyword-only hits are re-checked against access permissions before results are fused and reranked, and the system refuses when the evidence is insufficient.">
+              <img src="images/work/permission_aware_hybrid_retrieval_workflow.webp" alt="Hybrid retrieval with permission boundaries: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Hybrid retrieval with permission boundaries</b><span>Dense (Pinecone) and keyword (BM25) search run in parallel. Keyword-only hits are re-checked against access permissions before results are fused and reranked, and the system refuses when the evidence is insufficient.</span></figcaption>
+            </figure>
+            <figure class="diagram" tabindex="0" data-src="images/work/quality_and_latency_engineering_infographic.webp" data-title="Quality and latency engineering" data-caption="Hybrid retrieval with reranking raised Recall@5 from about 61% to 78%. A CPU/GPU split, an INT8 model, streaming, and caching cut p95 time-to-first-token from about 5 s to 2 s.">
+              <img src="images/work/quality_and_latency_engineering_infographic.webp" alt="Quality and latency engineering: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Quality and latency engineering</b><span>Hybrid retrieval with reranking raised Recall@5 from about 61% to 78%. A CPU/GPU split, an INT8 model, streaming, and caching cut p95 time-to-first-token from about 5 s to 2 s.</span></figcaption>
+            </figure>
             </div>
           </div>
         </div>
@@ -363,6 +375,10 @@
           <div class="diagrams" aria-label="T-Mobile system diagrams">
             <div class="diagrams-label"><i class="fa-solid fa-diagram-project"></i> How it works · click to enlarge</div>
             <div class="diagram-grid">
+            <figure class="diagram" tabindex="0" data-src="images/work/telecom_recommendation_platform_workflow.webp" data-title="Telecom recommendation platform" data-caption="Nightly Airflow jobs turn warehouse data into feature tables. A FastAPI service uses the XGBoost model to rank eligible plans for apps and campaigns, with a separate retrain, review, and drift-monitoring loop.">
+              <img src="images/work/telecom_recommendation_platform_workflow.webp" alt="Telecom recommendation platform: system diagram" loading="lazy" width="1586" height="992">
+              <figcaption><b>Telecom recommendation platform</b><span>Nightly Airflow jobs turn warehouse data into feature tables. A FastAPI service uses the XGBoost model to rank eligible plans for apps and campaigns, with a separate retrain, review, and drift-monitoring loop.</span></figcaption>
+            </figure>
             <figure class="diagram" tabindex="0" data-src="images/work/how_the_model_scores_eligible_plans.webp" data-title="How the model scores eligible plans" data-caption="Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.">
               <img src="images/work/how_the_model_scores_eligible_plans.webp" alt="How the model scores eligible plans: system diagram" loading="lazy" width="1586" height="992">
               <figcaption><b>How the model scores eligible plans</b><span>Every (subscriber, plan) pair is scored by one shared XGBoost model and the top three plans are recommended, so newly launched plans can be scored without retraining.</span></figcaption>
